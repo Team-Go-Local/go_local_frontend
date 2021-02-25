@@ -10,6 +10,7 @@
 -   [Running the Tests](#running-the-tests)
 -   [Database Schema](#database-schema)
 -   [Authors](#authors)
+-   [Statistics](#statistics)
 
 ## Description 
 
@@ -43,3 +44,7 @@ You can also run $ bundle exec rspec /path
 -   V Arruda | [github](https://github.com/nessarruda) \| [linkedin](https://www.linkedin.com/in/vanessa-alves-de-arruda/)
 -   Yesi Meza | [github](https://github.com/SK-Sam) \| [linkedin](https://www.linkedin.com/in/yesimeza/)
 
+## Statistics
+<!-- Shields -->
+![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/github/contributors/Team-Go-Local/go_local_frontend)
