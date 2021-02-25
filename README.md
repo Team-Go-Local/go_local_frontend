@@ -1,37 +1,51 @@
-# Go Local   
-## Overview  
-Go Local was an 11 day project for Turing School of Software & Design's Backend Program completed by a group of 7 students. This repository is a Rails application for the frontend of the website that communicates to a backend Rails application that communicates to a microservice utilizing Sinatra for API calls.
-## README Content
-- [Built With](#built-with)
-- [Getting Started](#getting-started)
-- [Testing](#testing-tools-utilized)
-- [Database Schema](#database-schema)
-- [Endpoints](#endpoints)
-- [Authors](#authors)
-## Built With  
-![rails-badge](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat-square)    
-![ruby-badge](https://img.shields.io/badge/Ruby-2.5.3-informational?style=flat-square)  
-## Getting Started  
+# Go Local-FE 
+
+![image](linktoimage)
+
+
+## Table of Contents
+
+-   [Description](#description)
+-   [Installing](#Installing)
+-   [Running the Tests](#running-the-tests)
+-   [Database Schema](#database-schema)
+-   [Authors](#authors)
+-   [Statistics](#statistics)
+
+## Description 
+
+This App allows local town users create  travel experiences for their local city where visitors can see those, rate them and add recommendations. 
+
+## Installng 
+To use on your local machine please follow the instcutions below: 
+
 ```
-$ git clone ________________
-$ bundle install
-$ rails db:create
-$ rails db:migrate
-```  
-## Testing Tools Utilized
-- RSpec  
-- Capybara  
-- SimleCov  
-- To run test suite:  
+  git clone git@github.com:Team-Go-Local/go_local_frontend.git
+  cd go_local_frontend 
+  bundle install 
+  rake db:{create,migrate}
+  run rails server 
+  in browser visit localhost:3000 
 ```
-$ bundle exec rspec
-```
-- After the test suite runs you can enter this in the command line to see a test coverage report:  
-```
-$ open coverage/index.html
-```  
+
+## Running the Tests
+Run with $ bundle exec rspec. All tests should be passing.
+You can also run $ bundle exec rspec /path
+
 ## Database Schema
-<img width="395" alt="Screen Shot 2021-02-24 at 8 59 41 AM" src="https://user-images.githubusercontent.com/68261312/109028045-a7511d80-767e-11eb-958d-35ad5852f5c0.png">
-## API Endpoints
-## Authors
-- Saundra Catalina | [github](https://github.com/saundracatalina) | [linkedin](https://www.linkedin.com/in/saundra-catalina/)
+![image](linkimage)
+
+## Authors 
+-   Cydnee Owens | [github](https://github.com/cowens87) \| [linkedin](https://www.linkedin.com/in/cydnee-owens-5280/)
+-   Gus Cunningham | [github](https://github.com/cunninghamge) \| [linkedin](https://www.linkedin.com/in/grayson-cunningham/)
+-   Isabelle Villasenor | [github](https://github.com/isabellevillasenor) \| [linkedin](https://www.linkedin.com/in/isabelle-villasenor/)
+-   Saundra Catalina | [github](https://github.com/saundracatalina) \| [linkedin](https://www.linkedin.com/in/saundra-catalina/)
+-   Sam Yeo | [github](https://github.com/SK-Sam) \| [linkedin](https://www.linkedin.com/in/samuel-horishin-yeo/)
+-   V Arruda | [github](https://github.com/nessarruda) \| [linkedin](https://www.linkedin.com/in/vanessa-alves-de-arruda/)
+-   Yesi Meza | [github](https://github.com/SK-Sam) \| [linkedin](https://www.linkedin.com/in/yesimeza/)
+
+## Statistics
+<!-- Shields -->
+![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/github/contributors/Team-Go-Local/go_local_frontend)
+
