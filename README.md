@@ -48,3 +48,4 @@ You can also run $ bundle exec rspec /path
 <!-- Shields -->
 ![](https://img.shields.io/badge/Rails-5.2.4-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/github/contributors/Team-Go-Local/go_local_frontend)
+
