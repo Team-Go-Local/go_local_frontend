@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= link_to 'Logout', logout_path unless !current_user%>
     <%= yield %>
   </body>
 </html>
