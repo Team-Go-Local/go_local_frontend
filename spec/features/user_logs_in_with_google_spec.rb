@@ -11,9 +11,21 @@ RSpec.describe "user logs in", type: :feature do
 
     user_count = User.count
     expect(user_count).to eq(1)
-    save_and_open_page
+
     user = User.first
     expect(page).to have_content("Welcome, #{user.name}")
     expect(current_path).to eq(dashboard_path)
+  end
+  it 'logs a returning user in via google mock' do
+    stub_omniauth
+    user = create(:omniauth_mock_user)
+    user_count = User.count
+    expect(user_count).to eq(1)
+    visit root_path
+    click_link 'Login with Google'
+    user_count = User.count
+    expect(user_count).to eq(1)
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Welcome, #{user.name}")
   end
 end

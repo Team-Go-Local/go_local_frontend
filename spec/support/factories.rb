@@ -8,6 +8,6 @@ FactoryBot.define do
   factory :omniauth_mock_user, parent: :user do
     email { 'john@example.com' }
     uid {'100000000000000000000'}
-    google_token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
+    token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
   end
 end
