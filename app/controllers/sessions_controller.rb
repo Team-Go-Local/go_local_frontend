@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
     uid = user_info[:uid]
     email = user_info[:info][:email]
     token = user_info[:credentials][:token]
-    
-    #found_user = User.find_or_create_by(uid: uid, email: email, token: token, name: name)
+
     found_user = User.find_or_create_by(uid: uid) do |user|
       user.uid = uid
       user.email = email
@@ -14,10 +13,11 @@ class SessionsController < ApplicationController
       user.name = name
     end
 
+    if !User.exists?(uid: uid)
+      user = User.create(uid: uid, email: email, token: token, name: name)
+      post "backend.herokuapp.com/api/v1/users/#{user.id}"
+    end
     session[:uid] = uid
-    # Only send this request IF we created a user in this action
-    # If we Found a user, we will NOT send this post request
-    # post "backend.herokuapp.com/api/v1/users/#{found_user.id}"
     redirect_to dashboard_path
   end
   
