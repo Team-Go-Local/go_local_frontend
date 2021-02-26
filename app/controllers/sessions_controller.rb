@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     token = user_info[:credentials][:token]
     
     #found_user = User.find_or_create_by(uid: uid, email: email, token: token, name: name)
-    
+
     found_user = User.find_or_create_by(name: name) do |user|
       user.uid = uid
       user.email = email
@@ -17,8 +17,7 @@ class SessionsController < ApplicationController
 
     found_user.save
     session[:uid] = uid
-    require 'pry'; binding.pry
-    redirect_to dashboard_path(found_user)
+    redirect_to dashboard_path
   end
 end
 
