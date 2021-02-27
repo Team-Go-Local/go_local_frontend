@@ -1,11 +1,11 @@
 <h1>Create Excursion</h1>
 
 <%= form_with url: '/excursions/create', method: 'get', local: true do |f|  %>
-<%= f.label :title, 'Excursion Title' %>
-<%= f.text_field :title %><br /><br />
-<%= f.label :description, 'Excursion Description' %>
-<%= f.text_field :description %><br /><br />
-<%= f.label :location, 'Excursion Location' %>
-<%= f.text_field :location %><br /><br />
-<%= f.submit 'Create Excursion' %>
+  <%= f.label :title, 'Excursion Title' %>
+  <%= f.text_field :title %><br /><br />
+  <%= f.label :description, 'Excursion Description' %>
+  <%= f.text_field :description %><br /><br />
+  <%= f.label :location, 'Excursion Location' %>
+  <%= f.text_field :location %><br /><br />
+  <%= f.submit 'Create Excursion' %>
 <% end %>
