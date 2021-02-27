@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/excursions/new', to: 'excursions#new'
   get '/excursions/create', to: 'excursions#create'
+  #edit excursion requires excursion id to edit
+  get '/excursions/edit/', to: 'excursions#edit'
   get '/dashboard', to: 'dashboard#show'
 end
