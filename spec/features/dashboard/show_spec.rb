@@ -7,7 +7,6 @@ RSpec.describe 'Show' do
       stub_omniauth
       click_link 'Login with Google'
 
-      visit dashboard_path
       within '#traveller' do
         expect(page).to have_content('Traveller')
         expect(page).to have_content('Favorites/Saved Excursions')
