@@ -11,16 +11,16 @@ class SessionsController < ApplicationController
       user.email = email
       user.token = token
       user.name = name
-    end
-
-    if !User.exists?(uid: uid)
-      user = User.create(uid: uid, email: email, token: token, name: name)
       post "backend.herokuapp.com/api/v1/users/#{user.id}"
     end
+  #
+  #   if !User.exists?(uid: uid)
+  #     user = User.create(uid: uid, email: email, token: token, name: name)
+  #   end
     session[:uid] = uid
     redirect_to dashboard_path
   end
-  
+
   def destroy
     session.delete(:uid)
     redirect_to root_path

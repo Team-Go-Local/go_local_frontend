@@ -1,0 +1,9 @@
+<%= form_with url: '/excursions/create', method: 'get', local: true do |f|  %>
+<%= f.label :title, 'Excursion Title' %>
+<%= f.text_field :title %><br />
+<%= f.label :description, 'Excursion Description' %>
+<%= f.text_field :description %><br />
+<%= f.label :location, 'Excursion Location' %>
+<%= f.text_field :location %><br />
+<%= f.submit 'Create Excursion' %>
+<% end %>

@@ -14,7 +14,7 @@ RSpec.describe 'Show' do
       end
       within '#local' do
         expect(page).to have_content('Local')
-        expect(page).to have_button('Add Exercursions')
+        expect(page).to have_button('Add Excursions')
         expect(page).to have_button('Delete')
         expect(page).to have_button('Edit')
       end
