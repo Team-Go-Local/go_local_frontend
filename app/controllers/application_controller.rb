@@ -6,5 +6,4 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by(uid: session[:uid]) if session[:uid]
   end
-
 end
