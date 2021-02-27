@@ -5,7 +5,7 @@ describe 'Excursion Create' do
     it 'can create an excursion and be redirected to dashboard' do
       visit root_path
       stub_omniauth
-      click_link 'Login with Google'
+      within('.login') { click_link }
 
       click_button "Add Excursions"
 
