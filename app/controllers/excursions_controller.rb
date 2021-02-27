@@ -1,9 +1,8 @@
 class ExcursionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
-    params_2 = {
+    {
       title: params[:title],
       description: params[:description],
       location: params[:location]
@@ -18,7 +17,7 @@ class ExcursionsController < ApplicationController
   end
 
   def update
-    params_2 = {
+    {
       title: params[:title],
       description: params[:description],
       location: params[:location]
