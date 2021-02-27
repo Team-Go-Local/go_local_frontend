@@ -3,11 +3,13 @@ class ExcursionsController < ApplicationController
   end
 
   def create
-    post "backend.herokuapp.com/excursions/create/#{params}"
-    params = {
+    params_2 = {
       title: params[:title],
       description: params[:description],
       location: params[:location]
     }
+    #post "backend.herokuapp.com/users/#{current_user.id}/excursions?#{params_2.to_query}"
+    flash[:notice] = "You have successfully created an Excursion!"
+    redirect_to dashboard_path
   end
 end

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       user.email = email
       user.token = token
       user.name = name
-      post "backend.herokuapp.com/api/v1/users/#{user.id}"
+      #post "backend.herokuapp.com/api/v1/users/#{user.id}"
     end
 
     session[:uid] = uid
