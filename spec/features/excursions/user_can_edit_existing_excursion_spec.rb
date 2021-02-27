@@ -5,7 +5,7 @@ describe 'Excursion Edit' do
     it 'can edit an excursion and be redirected to dashboard' do
       visit root_path
       stub_omniauth
-      click_link 'Login with Google'
+      within('.login') { click_link }
 
       click_button "Edit"
 

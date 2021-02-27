@@ -39,7 +39,7 @@ RSpec.describe "user logs in", type: :feature do
     expect(user_count).to eq(1)
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Welcome, #{user.name}")
-    click_button 'Logout'
+    click_link 'Logout'
 
     expect(current_path).to eq(root_path)
     expect(page).not_to have_content("Logout")
