@@ -5,7 +5,7 @@ RSpec.describe 'Show' do
     it 'can see a basic traveler and local boards' do
       visit root_path
       stub_omniauth
-      click_link 'Login with Google'
+      within('.login') { click_link }
 
       within '#traveller' do
         expect(page).to have_content('Traveller')

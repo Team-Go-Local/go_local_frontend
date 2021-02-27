@@ -7,7 +7,7 @@ RSpec.describe "user logs in", type: :feature do
     stub_omniauth
 
     visit root_path
-    click_link 'Login with Google'
+    within('.login') { click_link }
 
     user_count = User.count
     expect(user_count).to eq(1)
@@ -22,7 +22,7 @@ RSpec.describe "user logs in", type: :feature do
     user_count = User.count
     expect(user_count).to eq(1)
     visit root_path
-    click_link 'Login with Google'
+    within('.login') { click_link }
     user_count = User.count
     expect(user_count).to eq(1)
     expect(current_path).to eq(dashboard_path)
@@ -34,7 +34,7 @@ RSpec.describe "user logs in", type: :feature do
     user_count = User.count
     expect(user_count).to eq(1)
     visit root_path
-    click_link 'Login with Google'
+    within('.login') { click_link }
     user_count = User.count
     expect(user_count).to eq(1)
     expect(current_path).to eq(dashboard_path)
