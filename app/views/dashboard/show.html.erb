@@ -1,1 +1,19 @@
 <h1>Welcome, <%= current_user.name %></h1>
+<h1><%= button_to 'Explore' %></h1>
+<section id='traveller'>
+<h2>Traveller</h2>
+  <h3>Favorites/Saved Excursions</h3>
+  <section id='saved_exercursion'>
+
+  </section>
+  <h2>Travelboards/organize by city/location</h2>
+</section>
+
+<section id='local'>
+<h2>Local</h2>
+  <h3>Local Excursions</h3>
+  <h3><%= button_to 'Add Exercursions' %></h3>
+  <section id='my_exercursion'>
+    <h4>Denver, CO <%= button_to 'Delete' %><%= button_to 'Edit' %></h4>
+  </section>
+</section>
