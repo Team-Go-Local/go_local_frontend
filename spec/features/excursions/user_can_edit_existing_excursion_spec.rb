@@ -13,7 +13,7 @@ describe 'Excursion Edit' do
       fill_in :description, with: "Sample Description"
       fill_in :location, with: "Denver, CO"
 
-      click_button "Edit Excursion"
+      click_button "Update Excursion"
 
       expect(current_path).to eq(dashboard_path)
       within('#local') do
