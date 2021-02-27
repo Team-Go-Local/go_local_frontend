@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
     email = user_info[:info][:email]
     token = user_info[:credentials][:token]
 
-    found_user = User.find_or_create_by(uid: uid) do |user|
+    User.find_or_create_by(uid: uid) do |user|
       user.uid = uid
       user.email = email
       user.token = token
       user.name = name
-      #post "backend.herokuapp.com/api/v1/users/#{user.id}"
+      # post "backend.herokuapp.com/api/v1/users/#{user.id}"
     end
 
     session[:uid] = uid

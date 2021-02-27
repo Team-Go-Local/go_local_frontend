@@ -8,13 +8,11 @@ class ExcursionsController < ApplicationController
       location: params[:location]
     }
     #post "backend.herokuapp.com/users/#{current_user.id}/excursions?#{params_2.to_query}"
-    flash[:notice] = "You have successfully created an Excursion!"
+    flash[:notice] = 'You have successfully created an Excursion!'
     redirect_to dashboard_path
   end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
     {
@@ -22,8 +20,8 @@ class ExcursionsController < ApplicationController
       description: params[:description],
       location: params[:location]
     }
-    #patch "backend.herokuapp.com/users/#{current_user.id}/excursions/:excursion_id?#{params_2.to_query}"
-    flash[:notice] = "You have successfully edited an Excursion!"
+    # patch "backend.herokuapp.com/users/#{current_user.id}/excursions/:excursion_id?#{params_2.to_query}""
+    flash[:notice] = 'You have successfully edited an Excursion!'
     redirect_to dashboard_path
   end
 end
