@@ -6,7 +6,11 @@ describe 'welcome page' do
       visit root_path
 
       expect(page).to have_content("Welcome to Go Local!")
-      expect(page).to have_link('Login with Google')
+
+      click_link('Login with Google')
+
+      expect(current_path).to eq(dashboard_path)
+      #expect(page).to have_content("Welcome, #{user.name}")
     end
   end
 end
