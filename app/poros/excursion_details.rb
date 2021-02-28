@@ -10,7 +10,5 @@ class ExcursionDetails
     @address = data[:data][:attributes][:formatted_address]
     @place_id = data[:data][:attributes][:place_id]
     @types = data[:data][:attributes][:types]
-    # @id = data[:id]
-
   end
 end
