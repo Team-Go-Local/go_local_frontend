@@ -6,8 +6,9 @@ describe 'Excursion Edit' do
       visit root_path
       stub_omniauth
       within('.login') { click_link }
-
-      click_button "Edit"
+      #create the excursion (mock call to BE, should respond with JSON)
+      #within the excursion block
+      click_button "Edit" #calls BE with the id to edit (stub once we have facade and service)
 
       fill_in :title, with: "Sample Title"
       fill_in :description, with: "Sample Description"

@@ -1,0 +1,17 @@
+{
+  "data": {
+      "id": null,
+      "type": "place",
+      "attributes": {
+          "place_id": "ChIJE7tYRySHa4cRSauU_fDROfk",
+          "formatted_address": "6715 W Colfax Ave, Lakewood, CO 80214, United States",
+          "name": "Casa Bonita",
+          "types": [
+              "restaurant",
+              "food",
+              "point_of_interest",
+              "establishment"
+          ]
+      }
+  }
+}

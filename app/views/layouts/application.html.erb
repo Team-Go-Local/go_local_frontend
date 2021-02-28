@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GoLocalFrontend</title>
+    <title>Go Local</title>
+    <%= favicon_link_tag 'go_local.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +11,12 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= image_tag 'go_local.png', class: "navbar-brand", style: 'width:80px' %>
-      <%= link_to 'Logout', logout_path unless !current_user %>
-    </nav>
+    <% if current_user %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <%= image_tag 'go_local.png', class: "navbar-brand", style: 'width:80px' %>
+        <%= link_to 'Logout', logout_path %>
+      </nav>
+    <% end %>
 
     <% flash.each do |type, msgs|%>
     <h4><%= msgs %></h4>
