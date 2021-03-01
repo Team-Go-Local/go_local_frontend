@@ -3,9 +3,24 @@ require 'rails_helper'
 describe 'Excursion Create' do
   describe 'happy path' do
     it 'can create an excursion and be redirected to dashboard' do
-      json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20Description&location=Denver,%20CO&title=Sample%20Title&user_id=123")
-        .to_return(status: 200, body: json_response)
+      # query_params = ({
+      #                 title: "Casa Bonita", 
+      #                 location: "123 ave, Lakewood CO. 80214", 
+      #                 description: "good ambiance"
+      #                 })
+
+      # headers = {"CONTENT_TYPE" => "application/json"}  
+
+      # json_response = File.read('spec/fixtures/be_create_response.json')
+      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20Description&location=Denver,%20CO&title=Sample%20Title&user_id=123").
+        with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Length'=>'0',
+          'User-Agent'=>'Faraday v1.3.0'
+           }).
+         to_return(status: 200)
 
       user = instance_double('User')
       allow(user).to receive(:name).and_return('Yesi')
