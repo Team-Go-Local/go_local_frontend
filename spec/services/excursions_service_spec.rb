@@ -4,7 +4,7 @@ RSpec.describe ExcursionsService do
   describe '.create_excursion' do
     it 'sends a request to the BE to create an excursion in the DB' do
       json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20description&location=Denver,%20CO&title=Casa%20Bonita&user_id=123")
+      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20description&location=Denver,%20CO&title=Casa%20Bonita&user_id=123")
       . with(
         headers: {
        'Accept'=>'*/*',
