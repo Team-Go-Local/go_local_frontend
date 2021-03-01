@@ -1,14 +1,17 @@
 class ExcursionDetails 
   attr_reader :name,
-              :address, 
+              :location, 
               :place_id, 
-              :types
+              :description
               
 
   def initialize(data) 
-    @name = data[:data][:attributes][:name]
-    @address = data[:data][:attributes][:formatted_address]
+    # in tha facade pass it [:data][:attributes]
+    # attributes need to be changed to what we will show on show
+    # location, title 
+    @title = data[:data][:attributes][:name]
+    @location = data[:data][:attributes][:formatted_address]
     @place_id = data[:data][:attributes][:place_id]
-    @types = data[:data][:attributes][:types]
+    @description = data[:data][:attributes][:types]
   end
 end
