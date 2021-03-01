@@ -11,19 +11,18 @@ describe 'Excursion Create' do
       allow(user).to receive(:name).and_return('Yesi')
       allow(user).to receive(:id).and_return(123)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      
+
       visit root_path
       stub_omniauth
       within('.login') { click_link }
-      
+
       click_button "Add Excursions"
-      
+
       fill_in :title, with: "Sample Title"
       fill_in :description, with: "Sample Description"
       fill_in :location, with: "Denver, CO"
-      
-      click_button "Create Excursion"
 
+      click_button "Create Excursion"
 
       expect(current_path).to eq(dashboard_path)
       within('#local') do
