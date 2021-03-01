@@ -30,4 +30,19 @@ describe 'Excursion Create' do
       end
     end
   end
+  
+  describe 'page contents' do
+    it 'starts with no map and fields are not pre-filled' do
+      user = User.create!(name: 'Yesi', email: 'yesi@example.com')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit excursions_new_path
+
+      expect(page).to have_field(:place, placeholder: 'Enter a place')
+      expect(page.find_field(:title).value).to be nil
+      expect(page.find_field(:location).value).to be nil
+      expect(page.find_field(:description).value).to be_empty
+      expect(page).not_to have_css('#map')
+    end
+  end
 end
