@@ -4,7 +4,7 @@ describe 'Excursion Edit' do
   describe 'happy path' do
     it 'can edit an excursion and be redirected to dashboard' do
       json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/edit?description=Sample%20Description&location=Denver,%20CO&title=Sample%20Title&user_id=123")
+      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/update?description=Sample%20Description&location=Denver,%20CO&title=Sample%20Title&user_id=123")
         .to_return(status: 200, body: json_response)
 
       user = instance_double('User')
@@ -17,6 +17,11 @@ describe 'Excursion Edit' do
       within('.login') { click_link }
      
       #within the excursion block
+      data = JSON.parse(json_response, symbolize_names: true) 
+    
+      # ExcursionDetails.new(place_id: 1, name: 'casa bonita') #this is in place of having to pass the follwoing below 
+      ExcursionDetails.new({data: {attributes: {title: "casa bonita", location: "123 ave, lakewood co 80214", place_id: 12}}})
+
       click_button "Edit" 
 
       fill_in :title, with: "Sample Title"
