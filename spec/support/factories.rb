@@ -12,4 +12,12 @@ FactoryBot.define do
     token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
     id { 1 }
   end
+  factory :excursion do
+  initialize_with { new(attributes:
+  { title: Faker::Coffee.blend_name,
+    description: Faker::Coffee.notes,
+    location: Faker::Address.city,
+    place_id: Faker::String.random(length: 27)
+    })}
+  end
 end
