@@ -4,9 +4,13 @@ class ExcursionsFacade
       ExcursionsService.create_excursion(params)
     end
 
-    def updated_excursions(params)
-      data = ExcursionsService.update_excursions(params)
-      # excursions = ExcrusionsDetails.patch(data[:data][:attributes])
+    def get_excursion(id)
+      data = ExcursionsService.get_excursion(id)
+      Excursion.new(data[:data])
+    end
+
+    def update_excursion(params, id)
+      ExcursionsService.update_excursion(params, id)
     end
   end
 end
