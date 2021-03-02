@@ -20,7 +20,7 @@
         <div class="card-body">
           <h4 class="card-title"><%= excursion.title %></h4>
           <p class="card-text"><%= excursion.description %></p>
-          <%= button_to 'Edit', excursions_edit_path, method: :patch %>
+          <%= button_to 'Edit', excursions_edit_path(excursion.id), method: :get %>
           <%= button_to 'Delete' %>
         </div>
       </div>
