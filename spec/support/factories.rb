@@ -12,6 +12,8 @@ FactoryBot.define do
     token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
   end
 
+# The excursion factory below is for a PORO
+# To use you will need to use build 
   factory :excursion do
     initialize_with { new(attributes:
     { title: Faker::Coffee.blend_name,
