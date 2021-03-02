@@ -5,6 +5,7 @@ RSpec.describe 'Show' do
     it 'can see a basic traveler and local boards' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow(DashboardFacade).to receive(:user_excursions).and_return([])
 
       visit dashboard_path
 
@@ -17,10 +18,12 @@ RSpec.describe 'Show' do
         expect(page).to have_button('Add Excursions')
       end
     end
+
     it 'shows excursions created by the user' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       excursions = build_list(:excursion, 3)
+      allow(DashboardFacade).to receive(:user_excursions).and_return(excursions)
 
       visit dashboard_path
 
