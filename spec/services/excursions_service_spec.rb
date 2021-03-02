@@ -47,8 +47,11 @@ RSpec.describe ExcursionsService do
       expect(excursion[:attributes][:title]).to be_a(String)
       expect(excursion[:attributes]).to have_key(:description)
       expect(excursion[:attributes][:description]).to be_a(String)
+      expect(excursion[:attributes]).to have_key(:user_id)
+      expect(excursion[:attributes][:user_id]).to be_a(Integer)
       expect(excursion.keys).to match_array(%i[id type attributes])
-      expect(excursion[:attributes].keys).to match_array(%i[place_id location title description])
+      expect(excursion[:attributes].keys).to match_array(%i[place_id location title description user_id])
+      expect(data[:data].pluck(:attributes).pluck(:user_id).uniq.count).to eq(1)
     end
   end
 end

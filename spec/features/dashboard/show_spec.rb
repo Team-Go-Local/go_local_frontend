@@ -15,7 +15,7 @@ RSpec.describe 'Show' do
       end
       within '#local' do
         expect(page).to have_content('Local')
-        expect(page).to have_button('Add Excursions')
+        expect(page).to have_button('Add Excursion')
       end
     end
 
@@ -34,6 +34,20 @@ RSpec.describe 'Show' do
         expect(page).to have_button('Delete', count: 3)
         expect(page).to have_button('Edit', count: 3)
       end
+    end
+  end
+
+  describe 'navigation' do
+    it 'links to the new excursion page' do
+      user = create(:omniauth_mock_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow(DashboardFacade).to receive(:user_excursions).and_return([])
+
+      visit dashboard_path
+
+      click_button('Add Excursion')
+
+      expect(current_path).to eq(excursions_new_path)
     end
   end
 end
