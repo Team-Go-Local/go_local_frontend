@@ -10,6 +10,11 @@ class ExcursionsService
       parse_data(response)
     end
 
+    def user_excursions(user_id)
+      response = conn.get("api/v1/users/#{user_id}/excursions")
+      parse_data(response)
+    end
+
     private
 
     def conn
