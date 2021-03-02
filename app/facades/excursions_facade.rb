@@ -12,5 +12,9 @@ class ExcursionsFacade
     def update_excursion(excursion_params, user_id, excursion_id)
       ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
     end
+
+    def destroy_excursion(user_id, excursion_id)
+      ExcursionsService.destroy_excursion(user_id, excursion_id)
+    end
   end
 end

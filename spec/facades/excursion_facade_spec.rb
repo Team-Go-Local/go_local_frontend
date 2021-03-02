@@ -51,4 +51,14 @@ RSpec.describe ExcursionsFacade do
       expect(response).to eq(200)
     end
   end
+  describe '.destroy_excursion' do
+    it 'sends a delete request to the the excursion service' do
+      user = create(:user)
+      excursion_id = 7
+      allow(ExcursionsService).to receive(:destroy_excursion).and_return(200)
+      response = ExcursionsFacade.destroy_excursion(user.id, excursion_id)
+
+      expect(response).to eq(200)
+    end
+  end
 end
