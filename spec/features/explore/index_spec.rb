@@ -5,6 +5,7 @@ describe 'Explore Landing Page' do
     stub_omniauth
     user = create(:omniauth_mock_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    excursion_list = build_list(:excursion, 3)
     # Fake JSON objects representing a list of Excursions
     stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
 
@@ -15,10 +16,10 @@ describe 'Explore Landing Page' do
 
     expect(current_path).to eq('/explore')
     expect(page).to have_button("Search by City")
-    within('section.excursion-list') do
+    # within('section.excursion-list') do
       # we need save button
       # brief description
       # we need to see a list of excursions from earlier
-    end
+    # end
   end
 end
