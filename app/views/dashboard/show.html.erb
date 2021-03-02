@@ -21,7 +21,7 @@
           <h4 class="card-title"><%= excursion.title %></h4>
           <p class="card-text"><%= excursion.description %></p>
           <%= button_to 'Edit', excursions_edit_path(excursion.id), method: :get %>
-          <%= button_to 'Delete' %>
+          <%= button_to 'Delete', excursions_destroy_path(excursion.id), method: :delete %>
         </div>
       </div>
     <% end %>
