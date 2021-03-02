@@ -10,9 +10,10 @@ RSpec.describe ExcursionsService do
         place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
         location: "2440 18th St NW, Washington, DC, 20009, United States",
         title: "Millie & Al's",
-        description: "Great atmosphere with skeleton siren to announce specials."
+        description: "Great atmosphere with skeleton siren to announce specials.",
+        user_id: user.id
       }
-      response = ExcursionsService.create_excursion(excursion_params, user.id)
+      response = ExcursionsService.create_excursion(excursion_params)
 
       expect(response).to eq(204)
     end
