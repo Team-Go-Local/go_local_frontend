@@ -18,7 +18,6 @@ RSpec.describe ExcursionsService do
       expect(response).to eq(201)
     end
   end
-
   describe '.user_excursions' do
     it 'can send a request to the BE to see all of the specific users excursions' do
       user = create(:omniauth_mock_user)
@@ -50,6 +49,23 @@ RSpec.describe ExcursionsService do
       expect(excursion.keys).to match_array(%i[id type attributes])
       expect(excursion[:attributes].keys).to match_array(%i[place_id location title description user_id])
       expect(data[:data].pluck(:attributes).pluck(:user_id).uniq.count).to eq(1)
+    end
+  end
+  describe '.update_excursion' do
+    it 'sends a request to the BE to update an excursion in the DB' do
+      user = create(:user)
+      excursion_params = {
+        location: "2440 18th St NW, Washington, DC, 20009, United States",
+        title: "Millie & Al's",
+        description: "Great atmosphere with skeleton siren to announce specials.",
+        user_id: user.id
+      }
+
+      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions/7").to_return(status: 200)
+
+      response = ExcursionsService.update_excursion(excursion_params, 7)
+
+      expect(response).to eq(200)
     end
   end
 end

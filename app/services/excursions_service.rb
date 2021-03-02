@@ -6,9 +6,14 @@ class ExcursionsService
       end.status
     end
 
-    def update_excursion(params)
-      response = conn.patch("api/v1/users/#{params[:user_id]}/excursions/edit?#{params.to_query}")
-      parse_data(response)
+    def get_excursion(id)
+
+    end
+
+    def update_excursion(params, id)
+      conn.patch("api/v1/users/#{params[:user_id]}/excursions/#{id}") do |request|
+        request.body = {excursion: params}.to_json
+      end.status
     end
 
     def user_excursions(user_id)
