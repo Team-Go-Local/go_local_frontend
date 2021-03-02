@@ -5,6 +5,8 @@ RSpec.describe 'Show' do
     it 'can see a basic traveler and local boards' do
       visit root_path
       stub_omniauth
+      user = create(:omniauth_mock_user)
+      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
       within('.login') { click_link }
 
       within '#traveller' do
