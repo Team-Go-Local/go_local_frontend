@@ -7,7 +7,8 @@ class ExcursionsService
     end
 
     def get_excursion(id)
-
+      response = conn.get("api/v1/excursions/#{id}")
+      parse_data(response)
     end
 
     def update_excursion(excursion_params, user_id, excursion_id)
