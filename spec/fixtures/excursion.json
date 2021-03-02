@@ -1,0 +1,13 @@
+{
+  "data": {
+      "id": 3,
+      "type": "excursion",
+      "attributes": {
+        "place_id": "ChIJE8tYRySHa4cRSaud_fDROfk",
+        "location": "2440 18th St NW, Washington, DC, 20009, United States",
+        "title": "Millie & Al's",
+        "description": "Great atmosphere with skeleton siren to announce specials.",
+        "user_id": 1
+      }
+  }
+}

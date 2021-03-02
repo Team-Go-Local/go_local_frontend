@@ -3,24 +3,21 @@ require 'rails_helper'
 RSpec.describe ExcursionsService do
   describe '.create_excursion' do
     it 'sends a request to the BE to create an excursion in the DB' do
-      json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20description&location=Denver,%20CO&title=Casa%20Bonita&user_id=123")
-      . with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v1.3.0'
-        })
-      .to_return(status: 200, body: json_response)
+      user = create(:user)
+      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions").to_return(status: 204)
 
-      excursion = ExcursionsService.create_excursion({title: 'Casa Bonita', description: 'Sample description', location: 'Denver, CO', user_id: 123})
+      excursion_params = {
+        place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
+        location: "2440 18th St NW, Washington, DC, 20009, United States",
+        title: "Millie & Al's",
+        description: "Great atmosphere with skeleton siren to announce specials."
+      }
+      response = ExcursionsService.create_excursion(excursion_params, user.id)
 
-      expect(excursion).to be_an Hash
-      expect(excursion[:data][:attributes][:name]).to be_a String
-      expect(excursion[:data][:attributes][:formatted_address]).to be_a String
-      expect(excursion[:data][:attributes][:types]).to be_an Array
+      expect(response).to eq(204)
     end
   end
+
   describe '.user_excursions' do
     it 'can send a request to the BE to see all of the specific users excursions' do
       user = create(:omniauth_mock_user)
