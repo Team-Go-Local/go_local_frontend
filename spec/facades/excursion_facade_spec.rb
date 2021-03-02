@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ExcursionsFacade do
   describe '.create_excursion' do
     it 'sends a post request to the excursion service' do
-      allow(ExcursionsService).to receive(:create_excursion).and_return(204)
+      allow(ExcursionsService).to receive(:create_excursion).and_return(201)
 
       user = create(:user)
       excursion_params = {
@@ -15,7 +15,7 @@ RSpec.describe ExcursionsFacade do
       }
       response = ExcursionsFacade.create_excursion(excursion_params)
 
-      expect(response).to eq(204)
+      expect(response).to eq(201)
     end
   end
 end

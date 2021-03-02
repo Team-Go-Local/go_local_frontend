@@ -4,7 +4,7 @@ RSpec.describe ExcursionsService do
   describe '.create_excursion' do
     it 'sends a request to the BE to create an excursion in the DB' do
       user = create(:user)
-      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions").to_return(status: 204)
+      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions").to_return(status: 201)
 
       excursion_params = {
         place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
@@ -15,7 +15,7 @@ RSpec.describe ExcursionsService do
       }
       response = ExcursionsService.create_excursion(excursion_params)
 
-      expect(response).to eq(204)
+      expect(response).to eq(201)
     end
   end
 
