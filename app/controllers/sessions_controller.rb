@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     email = user_info[:info][:email]
     token = user_info[:credentials][:token]
 
-    User.find_or_create_by(uid: uid) do |user|
+    user = User.find_or_create_by(uid: uid) do |user|
       user.uid = uid
       user.email = email
       user.token = token
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:uid)
+    session.delete(:id)
     redirect_to root_path
   end
 end
