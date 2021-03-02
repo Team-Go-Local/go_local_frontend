@@ -99,4 +99,14 @@ RSpec.describe ExcursionsService do
       expect(excursion[:attributes].keys).to match_array(%i[place_id location title description user_id])
     end
   end
+  describe '.destroy_excursion' do
+    it 'can send a request to the BE to destroy a specific excursion' do
+      user = create(:user)
+      excursion_id = 7
+      stub_request(:delete, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions/#{excursion_id}").to_return(status: 200)
+
+      response = ExcursionsService.destroy_excursion(user.id, excursion_id)
+      expect(response).to eq(200)
+    end
+  end
 end

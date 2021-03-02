@@ -22,6 +22,10 @@ class ExcursionsService
       parse_data(response)
     end
 
+    def destroy_excursion(user_id, excursion_id)
+      conn.delete("api/v1/users/#{user_id}/excursions/#{excursion_id}").status
+    end
+
     private
 
     def conn
