@@ -57,13 +57,12 @@ RSpec.describe ExcursionsService do
       excursion_params = {
         location: "2440 18th St NW, Washington, DC, 20009, United States",
         title: "Millie & Al's",
-        description: "Great atmosphere with skeleton siren to announce specials.",
-        user_id: user.id
+        description: "Great atmosphere with skeleton siren to announce specials."
       }
 
       stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}/excursions/7").to_return(status: 200)
 
-      response = ExcursionsService.update_excursion(excursion_params, 7)
+      response = ExcursionsService.update_excursion(excursion_params, user.id, 7)
 
       expect(response).to eq(200)
     end

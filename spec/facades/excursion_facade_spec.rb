@@ -46,7 +46,7 @@ RSpec.describe ExcursionsFacade do
         title: "Millie & Al's",
         description: "Great atmosphere with skeleton siren to announce specials."
       }
-      response = ExcursionsFacade.update_excursion(excursion_params, 7)
+      response = ExcursionsFacade.update_excursion(excursion_params, 2, 7)
 
       expect(response).to eq(200)
     end

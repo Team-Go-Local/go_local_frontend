@@ -12,7 +12,7 @@ class ExcursionsController < ApplicationController
   end
 
   def update
-    ExcursionsFacade.update_excursion(excursion_params.merge({user_id: current_user.id}), params[:id])
+    ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
     flash[:notice] = 'You have successfully edited an Excursion!'
     redirect_to dashboard_path
   end

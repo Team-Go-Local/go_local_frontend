@@ -9,8 +9,8 @@ class ExcursionsFacade
       Excursion.new(data[:data])
     end
 
-    def update_excursion(params, id)
-      ExcursionsService.update_excursion(params, id)
+    def update_excursion(excursion_params, user_id, excursion_id)
+      ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
     end
   end
 end
