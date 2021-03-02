@@ -5,6 +5,11 @@ class ExcursionsService
       parse_data(response)
     end
 
+    def list_all_excursions
+      response = conn.get("/api/v1/excursions")
+      parse_data(response)
+    end
+
     private
 
     def conn
