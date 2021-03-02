@@ -1,11 +1,26 @@
-<h1>Create Excursion</h1>
-
-<%= form_with url: '/excursions/create', method: 'get', local: true do |f|  %>
-  <%= f.label :title, 'Excursion Title' %>
-  <%= f.text_field :title %><br /><br />
-  <%= f.label :description, 'Excursion Description' %>
-  <%= f.text_field :description %><br /><br />
-  <%= f.label :location, 'Excursion Location' %>
-  <%= f.text_field :location %><br /><br />
-  <%= f.submit 'Create Excursion' %>
+<%= javascript_tag do %>
+  window.mapKey = "<%=j ENV['GOOGLE_MAP_KEY'] %>"
 <% end %>
+<%= javascript_include_tag 'new_excursion' %>
+
+<h1>Create Excursion</h1>
+  <%= form_with method: 'get', local: true do |f| %>
+  <%= f.text_field :place, id: 'autocomplete', placeholder: 'Enter a place',
+  style: 'width:50%' %>
+<% end %><br>
+<span id='test'></span>
+<div>
+  <iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:none"></iframe>
+</div>
+  <%= form_with url: '/excursions/create', method: 'get', local: true do |f|  %>
+    <%= f.hidden_field :place_id, value: 'string' %>
+    <%= f.label :title, 'Excursion Title' %>
+    <%= f.text_field :title %><br /><br />
+    <%= f.label :location, 'Excursion Location'%>
+    <%= f.text_field :location %><br /><br />
+    <%= f.label :description, 'Excursion Description' %>
+    <%= f.text_area :description %><br/><br />
+    <%= f.submit 'Create Excursion' %>
+  <% end %>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&libraries=places&callback=initAutocomplete" async defer></script>

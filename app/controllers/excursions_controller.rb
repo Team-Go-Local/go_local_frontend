@@ -1,24 +1,22 @@
 class ExcursionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
     flash[:notice] = "You have successfully created an Excursion!"
     redirect_to dashboard_path
   end
- 
-  def edit
-  end
+
+  def edit; end
 
   def update
-    params_2 = {
+    {
       title: params[:title],
       description: params[:description],
       location: params[:location]
     }
-    #patch "backend.herokuapp.com/users/#{current_user.id}/excursions/:excursion_id?#{params_2.to_query}"
-    flash[:notice] = "You have successfully edited an Excursion!"
+    # patch "backend.herokuapp.com/users/#{current_user.id}/excursions/:excursion_id?#{params_2.to_query}""
+    flash[:notice] = 'You have successfully edited an Excursion!'
     redirect_to dashboard_path
   end
 
