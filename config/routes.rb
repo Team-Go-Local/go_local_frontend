@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   post '/excursions/create', to: 'excursions#create'
   get '/excursions/edit/:id', to: 'excursions#edit', as: :excursions_edit
   patch '/excursions/:id', to: 'excursions#update', as: :excursions_update
+  delete '/excursions/:id', to: 'excursions#destroy', as: :excursions_destroy
   get '/dashboard', to: 'dashboard#show'
 end
