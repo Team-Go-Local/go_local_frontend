@@ -1,12 +1,11 @@
-class ExcursionsFacade 
+class ExcursionsFacade
   class << self
-    def create_excursion(params_2)
-      data = ExcursionsService.create_excursion(params_2)
-      # excursions = ExcrusionsDetails.new(data[:data][:attributes])
+    def create_excursion(params)
+      ExcursionsService.create_excursion(params)
     end
 
-    def updated_excursions(params_2)
-      data = ExcursionsService.update_excursions(params_2)
+    def updated_excursions(params)
+      data = ExcursionsService.update_excursions(params)
       # excursions = ExcrusionsDetails.patch(data[:data][:attributes])
     end
   end

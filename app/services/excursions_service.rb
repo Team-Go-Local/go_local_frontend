@@ -1,12 +1,13 @@
 class ExcursionsService
   class << self
-    def create_excursion(params_2)
-      response = conn.post("api/v1/users/#{params_2[:user_id]}/excursions/create?#{params_2.to_query}")
-      # parse_data(response)
+    def create_excursion(params)
+      conn.post("api/v1/users/#{params[:user_id]}/excursions") do |request|
+        request.body = {excursion: params}.to_json
+      end.status
     end
 
-    def update_excursion(params_2)
-      response = conn.patch("api/v1/users/#{params_2[:user_id]}/excursions/edit?#{params_2.to_query}")
+    def update_excursion(params)
+      response = conn.patch("api/v1/users/#{params[:user_id]}/excursions/edit?#{params.to_query}")
       parse_data(response)
     end
 
