@@ -1,19 +1,43 @@
-<h1>Welcome, <%= current_user.name %></h1>
-<h1><%= button_to 'Explore' %></h1>
-<section id='traveller'>
-<h2>Traveller</h2>
-  <h3>Favorites/Saved Excursions</h3>
-  <section id='saved_excursion'>
+<div class="welcome"
+  <h1>Welcome, <%= current_user.name %></h1>
+</div>
 
-  </section>
-    <h2>Travelboards/organize by city/location</h2>
-  </section>
+<div class="col text-center">
+  <button type="button" class="btn btn-primary">Explore</button>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section id='traveller'>
+        <h2>Traveller</h2>
+        <p><b>Favorites/Saved Excursions</b></p>
+      <section id='saved_excursion'>
+    </div>
 
-<section id='local'>
-<h2>Local</h2>
-  <h3>Local Excursions</h3>
-  <h3><%= button_to 'Add Excursions', excursions_new_path, method: :get %></h3>
-  <section id='my_excursion'>
-    <h4>Denver, CO <%= button_to 'Delete' %> <%= button_to 'Edit', excursions_edit_path, method: :get %></h4>
-  </section>
-</section>
+    <div class="col">
+      <section id='local'>
+          <h2>Local
+          <a href="/excursions/new" role="button" class="btn btn-outline-primary float-right">Add Excursions</a></h2>
+      </section>
+        
+      <section id='my_excursion'>
+        <div class="card border-secondary mb-3" style="max-width: 15rem;">
+          <div class="card-header">My Excursions</div>
+          <div class="card-body">
+            <h4 class="card-title">Excursion Title</h4>
+            <p class="card-text">Description from Backend</p>
+            <a href="#" class="card-link">Delete</a>
+            <a href="/excursions/edit" class="card-link">Edit</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Photo by <a href="https://unsplash.com/@photoripey?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ibrahim Rifath</a> on <a href="https://unsplash.com/s/photos/free?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+</footer>
