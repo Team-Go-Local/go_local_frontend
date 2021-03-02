@@ -2,37 +2,41 @@ require 'rails_helper'
 
 describe 'Excursion Edit' do
   describe 'happy path' do
-    xit 'can edit an excursion and be redirected to dashboard' do
-      json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/update?description=Sample%20Description&location=Denver,%20CO&title=Sample%20Title&user_id=123")
-        .to_return(status: 200, body: json_response)
-
-      user = instance_double('User')
-      allow(user).to receive(:name).and_return('Yesi')
-      allow(user).to receive(:id).and_return(123)
+    it 'can edit an excursion and be redirected to dashboard' do
+      user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow(ExcursionsFacade).to receive(:update_excursion)
 
-      visit root_path
-      stub_omniauth
-      within('.login') { click_link }
+      excursion = Excursion.new({ id: 5,
+                                  attributes: {
+                                  title: 'Cabrini Bridge',
+                                  description: 'cool hangout spot',
+                                  location: 'Harding Drive, New Orleans, LA, USA'
+                                  }})
 
-      #within the excursion block
-      data = JSON.parse(json_response, symbolize_names: true)
+      allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
+      allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
 
-      # ExcursionDetails.new(place_id: 1, name: 'casa bonita') #this is in place of having to pass the follwoing below
-      ExcursionDetails.new({data: {attributes: {title: "casa bonita", location: "123 ave, lakewood co 80214", place_id: 12}}})
+      visit dashboard_path
+      within('#my_excursions') do
+        click_button('Edit')
+      end
 
-      click_button "Edit"
+      expect(current_path).to eq(excursions_edit_path(excursion.id))
 
-      fill_in :title, with: "Sample Title"
-      fill_in :description, with: "Sample Description"
-      fill_in :location, with: "Broomfiled, CO"
+      expect(find_field(:title).value).to eq(excursion.title)
+      expect(find_field(:description).value).to eq(excursion.description)
+      expect(find_field(:location).value).to eq(excursion.location)
 
-      click_button "Update Excursion"
+
+      fill_in :title, with: 'Magnolia Bridge'
+      fill_in :description, with: 'Lots of fun'
+      click_button('Update Excursion')
 
       expect(current_path).to eq(dashboard_path)
-      within('#local') do
-        expect(page).to have_content("Broomfield, CO")
+      expect(page).to have_content("You have successfully edited an Excursion!")
+      within('#my_excursions') do
+        expect(page).to have_content(excursion.title)
       end
     end
   end

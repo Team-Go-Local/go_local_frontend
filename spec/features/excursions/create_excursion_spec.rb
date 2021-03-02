@@ -11,6 +11,7 @@ describe 'Excursion Create' do
       allow(excursion).to receive(:title).and_return("Cabrini Bridge")
       allow(excursion).to receive(:description).and_return("cool hangout spot")
       allow(excursion).to receive(:location).and_return("Harding Drive, New Orleans, LA, USA")
+      allow(excursion).to receive(:id).and_return(1)
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
 
       visit excursions_new_path
