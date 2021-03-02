@@ -19,5 +19,6 @@ RSpec.describe Excursion do
     expect(excursion.location).to eq(data[:attributes][:location])
     expect(excursion.place_id).to eq(data[:attributes][:place_id])
     expect(excursion.description).to eq(data[:attributes][:description])
+    expect(excursion.id).to eq(data[:id])
   end
 end

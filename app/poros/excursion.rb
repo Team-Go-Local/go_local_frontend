@@ -2,7 +2,8 @@ class Excursion
   attr_reader :title,
               :location,
               :place_id,
-              :description
+              :description,
+              :id
 
 
   def initialize(data)
@@ -10,5 +11,6 @@ class Excursion
     @location = data[:attributes][:location]
     @place_id = data[:attributes][:place_id]
     @description = data[:attributes][:description]
+    @id = data[:id]
   end
 end
