@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   #edit excursion requires excursion id to edit
   get '/excursions/edit/', to: 'excursions#edit'
   get '/dashboard', to: 'dashboard#show'
+  get '/explore', to: 'explore#index'
 end
