@@ -17,6 +17,12 @@ class ExcursionsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def destroy
+    ExcursionsFacade.destroy_excursion(params[:id])
+    flash[:notice] = 'You have successfully deleted an Excursion!'
+    redirect_to dashboard_path
+  end
+
   private
 
   def excursion_params
