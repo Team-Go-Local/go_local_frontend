@@ -2,7 +2,7 @@ class ExcursionsController < ApplicationController
   def new; end
 
   def create
-    ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
+    ExcursionsFacade.create_excursion(excursion_params, current_user.id)
     flash[:notice] = "You have successfully created an Excursion!"
     redirect_to dashboard_path
   end
@@ -24,6 +24,6 @@ class ExcursionsController < ApplicationController
   private
 
   def excursion_params
-    params.permit(:title, :description, :location)
+    params.permit(:title, :description, :location, :place_id)
   end
 end
