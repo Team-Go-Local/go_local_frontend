@@ -20,5 +20,22 @@ RSpec.describe ExcursionsService do
       expect(excursion[:data][:attributes][:formatted_address]).to be_a String
       expect(excursion[:data][:attributes][:types]).to be_an Array
     end
+    describe "list all excursions" do 
+      it "can send a request to list all excursions" do 
+        json_response = File.read('spec/fixtures/all_excursions.json')
+        stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
+  
+
+        json_data = ExcursionsService.list_all_excursions
+
+        expect(json_data).to have_key(:data)
+        expect(json_data[:data]).to be_an(Array)
+        expect(json_data[:data].first[:id]).to be_an(Numeric)
+        expect(json_data[:data].first[:type]).to be_a(String)
+        expect(json_data[:data].first[:attributes]).to be_a(Hash)
+        expect(json_data[:data].first[:attributes][:title]).to be_a(String)
+        expect(json_data[:data].first[:attributes][:description]).to be_a(String)
+      end
+    end
   end
 end
