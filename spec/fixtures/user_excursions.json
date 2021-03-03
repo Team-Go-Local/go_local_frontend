@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "id": 5,
+      "type": "excursion",
+      "attributes": {
+        "place_id": "ChIJE7tYRySHa4cRSauU_fDROfk",
+        "location": "538 Hagan Avenue, New Orleans, LA, 70119, United States",
+        "title": "Parkway Bakery & Tavern",
+        "description": "Longtime (since 1911) neighborhood hangout with a patio known for classic-style po' boys.",
+        "user_id": 2
+      }
+    },
+    {
+      "id": 3,
+      "type": "excursion",
+      "attributes": {
+        "place_id": "ChIJE8tYRySHa4cRSaud_fDROfk",
+        "location": "2440 18th St NW, Washington, DC, 20009, United States",
+        "title": "Millie & Al's",
+        "description": "Great atmosphere with skeleton siren to announce specials.",
+        "user_id": 2
+      }
+    }
+  ]
+}

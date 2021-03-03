@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
       user.email = email
       user.token = token
       user.name = name
-      # Call this Faraday post WHILE FE User is being created
       Faraday.post("https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
     end
     session[:id] = user.id
