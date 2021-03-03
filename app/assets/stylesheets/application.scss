@@ -2255,7 +2255,7 @@
 
  .form-check-input[disabled] ~ .form-check-label,
  .form-check-input:disabled ~ .form-check-label {
-   color: #8e8c84;
+   color: #7b7766;
  }
 
  .form-check-label {
@@ -5357,6 +5357,15 @@
    line-height: 1.2;
    background-clip: border-box;
    border-radius: 400px;
+   color: #fff;
+ }
+
+ .excursion {
+   padding: 50px;
+   border-radius: 0.3rem;
+   margin: 50px;
+   background-clip: border-box;
+   border-radius: 10px;
    color: #fff;
  }
 
