@@ -13,7 +13,6 @@ FactoryBot.define do
     token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
     id { 1 }
   end
-
 # The excursion factory below is for a PORO
 # To use you will need to use build
   factory :excursion do

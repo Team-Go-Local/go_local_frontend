@@ -16,5 +16,12 @@ class ExcursionsFacade
     def destroy_excursion(user_id, excursion_id)
       ExcursionsService.destroy_excursion(user_id, excursion_id)
     end
+
+    def list_all_excursions
+      data = ExcursionsService.list_all_excursions
+      data[:data].map do |excursion|
+        Excursion.new(excursion)
+      end
+    end
   end
 end

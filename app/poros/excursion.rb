@@ -5,7 +5,6 @@ class Excursion
               :description,
               :id
 
-
   def initialize(data)
     @title = data[:attributes][:title]
     @location = data[:attributes][:location]

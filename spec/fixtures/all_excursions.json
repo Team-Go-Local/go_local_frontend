@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "excursion",
+      "attributes": {
+        "title": "Wizards Chest",
+        "description": "Isabelle picked this place"
+      }
+    },
+    {
+      "id": 2,
+      "type": "excursion",
+      "attributes": {
+        "title": "La Fillette",
+        "description": "Saundra picked this place!"
+      }
+    },
+    {
+      "id": 3,
+      "type": "excursion",
+      "attributes": {
+        "title": "Fontainbleau State Park",
+        "description": "Gus hiked in this place!"
+      }
+    }
+  ]
+}

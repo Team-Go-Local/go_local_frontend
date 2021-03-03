@@ -11,6 +11,11 @@ class ExcursionsService
       parse_data(response)
     end
 
+    def list_all_excursions
+      response = conn.get("/api/v1/excursions")
+      parse_data(response)
+    end
+
     def update_excursion(excursion_params, user_id, excursion_id)
       conn.patch("api/v1/users/#{user_id}/excursions/#{excursion_id}") do |request|
         request.body = {excursion: excursion_params}.to_json
@@ -25,7 +30,7 @@ class ExcursionsService
     def destroy_excursion(user_id, excursion_id)
       conn.delete("api/v1/users/#{user_id}/excursions/#{excursion_id}").status
     end
-
+    
     private
 
     def conn

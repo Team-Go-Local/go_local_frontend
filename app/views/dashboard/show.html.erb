@@ -1,5 +1,5 @@
 <h1>Welcome, <%= current_user.name %></h1>
-<h1><%= button_to 'Explore' %></h1>
+<h1><%= button_to 'Explore', explore_path, method: :get %></h1>
 <section id='traveller'>
 <h2>Traveller</h2>
   <h3>Favorites/Saved Excursions</h3>

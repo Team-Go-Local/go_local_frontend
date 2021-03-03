@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   patch '/excursions/:id', to: 'excursions#update', as: :excursions_update
   delete '/excursions/:id', to: 'excursions#destroy', as: :excursions_destroy
   get '/dashboard', to: 'dashboard#show'
+  get '/explore', to: 'explore#index'
 end
