@@ -27,19 +27,19 @@
           <a href="/excursions/new" role="button" class="btn btn-outline-primary float-right">Add Excursions</a></h2>
       </section>
         
-      <% @excursions.each do |excursion| %>
-        <section id='my_excursion'>
-          <div class="card border-secondary mb-3" style="max-width: 15rem;">
-            <div class="card-header">My Excursions</div>
-            <div class="card-body">
-              <h4 class="card-title"><%= excursion.title %></h4>
-              <p class="card-text"><%= excursion.description %></p>
-              <%= link_to 'Delete', excursions_destroy_path(excursion.id), method: :delete, class: "card-link" %>
-              <%= link_to 'Edit', excursions_edit_path(excursion.id), method: :get, class: "card-link" %>
+        <section id='my_excursions'>
+          <% @excursions.each do |excursion| %>
+            <div class="card border-secondary mb-3" style="max-width: 15rem;">
+              <div class="card-header">My Excursions</div>
+              <div class="card-body">
+                <h4 class="card-title"><%= excursion.title %></h4>
+                <p class="card-text"><%= excursion.description %></p>
+                <%= link_to 'Delete', excursions_destroy_path(excursion.id), method: :delete, class: "card-link" %>
+                <%= link_to 'Edit', excursions_edit_path(excursion.id), method: :get, class: "card-link" %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </section>
-      <% end %>
     </div>
   </div>
 </div>

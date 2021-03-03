@@ -15,7 +15,7 @@ RSpec.describe 'Show' do
       end
       within '#local' do
         expect(page).to have_content('Local')
-        expect(page).to have_button('Add Excursion')
+        expect(page).to have_link('Add Excursion')
       end
     end
 
@@ -31,8 +31,8 @@ RSpec.describe 'Show' do
         excursions.each do |excursion|
           expect(page).to have_content(excursion.title)
         end
-        expect(page).to have_button('Delete', count: 3)
-        expect(page).to have_button('Edit', count: 3)
+        expect(page).to have_link('Delete', count: 3)
+        expect(page).to have_link('Edit', count: 3)
       end
     end
   end
@@ -45,7 +45,7 @@ RSpec.describe 'Show' do
 
       visit dashboard_path
 
-      click_button('Add Excursion')
+      click_link('Add Excursion')
 
       expect(current_path).to eq(excursions_new_path)
     end
