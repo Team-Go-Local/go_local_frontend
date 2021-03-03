@@ -59,7 +59,7 @@ RSpec.describe 'Show' do
 
       visit dashboard_path
 
-      click_button('Edit')
+      click_link('Edit')
 
       expect(current_path).to eq(excursions_edit_path(excursion.id))
     end
@@ -68,7 +68,9 @@ RSpec.describe 'Show' do
       allow(ExcursionsFacade).to receive(:list_all_excursions).and_return([])
       visit dashboard_path
 
-      click_button('Explore')
+      within('#explore') do
+        click_link('Explore')
+      end
 
       expect(current_path).to eq(explore_path)
     end

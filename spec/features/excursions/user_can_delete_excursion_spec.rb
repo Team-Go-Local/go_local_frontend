@@ -41,7 +41,7 @@ describe 'Excursion Delete' do
 
     visit dashboard_path
     within('#my_excursions') do
-      click_button('Delete')
+      click_link('Delete')
     end
 
     expect(page).to have_content(excursion.title)

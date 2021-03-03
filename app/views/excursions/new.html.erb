@@ -18,15 +18,15 @@
 
 <div class="form-group">
   <%= form_with url: '/excursions/create', method: :post, local: true do |f|  %>
-    <%= f.hidden_field :place_id, value: 'string' %>
+    <%= f.hidden_field :place_id, value: @excursion.place_id %>
     <%= f.label :title, 'Excursion Title', style: "color: #e4e8de" %>
-    <%= f.text_field :title, placeholder: 'Title...' %><br /><br />
+    <%= f.text_field :title, placeholder: 'Title...', value: @excursion.title %><br /><br />
     
     <%= f.label :location, 'Excursion Location', style: "color: #e4e8de" %>
-    <%= f.text_field :location, placeholder: 'Location...' %><br /><br />
+    <%= f.text_field :location, placeholder: 'Location...', value: @excursion.location %><br /><br />
     
     <%= f.label :description, 'Excursion Description', style: "color: #e4e8de" %>
-    <%= f.text_area :description, placeholder: 'Description...' %><br /><br />
+    <%= f.text_area :description, placeholder: 'Description...', value: @excursion.description %><br /><br />
     
     <%= f.submit 'Create Excursion' %>
   <% end %>
