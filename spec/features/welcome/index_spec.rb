@@ -16,7 +16,7 @@ describe 'welcome page' do
       within('.login') { click_link }
       
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Welcome, John Smith")
+      expect(page).to have_content("Welcome, #{user.name}")
     end
   end
 end
