@@ -24,7 +24,12 @@ class ExcursionsFacade
     end
 
     def destroy_excursion(user_id, excursion_id)
-      ExcursionsService.destroy_excursion(user_id, excursion_id)
+      status = ExcursionsService.destroy_excursion(user_id, excursion_id)
+      if status == 200
+        "You have successfully deleted an Excursion."
+      else
+        "We're sorry, we were unable to save your excursion. Please try again later."
+      end
     end
 
     def list_all_excursions

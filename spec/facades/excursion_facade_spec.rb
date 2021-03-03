@@ -58,8 +58,9 @@ RSpec.describe ExcursionsFacade do
       allow(ExcursionsService).to receive(:destroy_excursion).and_return(200)
       response = ExcursionsFacade.destroy_excursion(user.id, excursion_id)
 
-      expect(response).to eq(200)
+      expect(response).to eq("You have successfully deleted an Excursion.")
     end
+    
     describe "list all excursions" do
       it "can receive a list of all excursions" do
         json_response = File.read('spec/fixtures/all_excursions.json')
