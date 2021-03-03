@@ -71,7 +71,7 @@ describe 'Excursion Create' do
       click_button('Create Excursion')
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("We're sorry, we were unable to save your excursion. Please try again later.")
+      expect(page).to have_content("We're sorry, we were unable to create your excursion. Please try again later.")
     end
   end
 end

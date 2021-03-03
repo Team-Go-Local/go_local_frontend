@@ -34,7 +34,7 @@ describe 'Excursion Edit' do
       click_button('Update Excursion')
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("You have successfully updated your Excursion!")
+      expect(page).to have_content("You have successfully updated an Excursion!")
       within('#my_excursions') do
         expect(page).to have_content(excursion.title)
       end
@@ -86,7 +86,7 @@ describe 'Excursion Edit' do
       click_button('Update Excursion')
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("We're sorry, we were unable to save your excursion. Please try again later.")
+      expect(page).to have_content("We're sorry, we were unable to update your excursion. Please try again later.")
     end
   end
 end

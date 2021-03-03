@@ -22,7 +22,7 @@ describe 'Excursion Delete' do
     end
     expect(current_path).to eq(dashboard_path)
     expect(page).to_not have_content(excursion.title)
-    expect(page).to have_content("You have successfully deleted an Excursion.")
+    expect(page).to have_content("You have successfully deleted an Excursion!")
   end
 
   it 'displays an error message if the backend call is unsucessful' do
@@ -45,6 +45,6 @@ describe 'Excursion Delete' do
     end
 
     expect(page).to have_content(excursion.title)
-    expect(page).to have_content("We're sorry, we were unable to save your excursion. Please try again later.")
+    expect(page).to have_content("We're sorry, we were unable to delete your excursion. Please try again later.")
   end
 end
