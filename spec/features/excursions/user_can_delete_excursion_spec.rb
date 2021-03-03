@@ -18,7 +18,7 @@ describe 'Excursion Delete' do
     visit dashboard_path
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
     within('#my_excursions') do
-      click_button('Delete')
+      click_link('Delete')
     end
     expect(current_path).to eq(dashboard_path)
     expect(page).to_not have_content(excursion.title)
