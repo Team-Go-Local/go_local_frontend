@@ -1,6 +1,5 @@
 class ExploreController < ApplicationController
-
-  def index 
+  def index
     @excursions = ExcursionsFacade.list_all_excursions
   end
-end 
+end

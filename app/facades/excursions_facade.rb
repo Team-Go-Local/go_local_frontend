@@ -1,7 +1,12 @@
 class ExcursionsFacade
   class << self
     def create_excursion(params)
-      ExcursionsService.create_excursion(params)
+      status = ExcursionsService.create_excursion(params)
+      if status == 201
+        "You have successfully created an Excursion!"
+      else
+        "We're sorry, we were unable to save your excursion. Please try again later."
+      end
     end
 
     def get_excursion(id)

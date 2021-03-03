@@ -15,7 +15,7 @@ RSpec.describe ExcursionsFacade do
       }
       response = ExcursionsFacade.create_excursion(excursion_params)
 
-      expect(response).to eq(201)
+      expect(response).to eq("You have successfully created an Excursion!")
     end
   end
   describe '.get_excursion' do
@@ -60,11 +60,11 @@ RSpec.describe ExcursionsFacade do
 
       expect(response).to eq(200)
     end
-    describe "list all excursions" do 
-      it "can receive a list of all excursions" do 
+    describe "list all excursions" do
+      it "can receive a list of all excursions" do
         json_response = File.read('spec/fixtures/all_excursions.json')
         stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
-  
+
         json_data = ExcursionsFacade.list_all_excursions
 
         expect(json_data).to be_an(Array)

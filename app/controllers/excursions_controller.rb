@@ -1,10 +1,18 @@
 class ExcursionsController < ApplicationController
-  def new; end
+  def new
+    @excursion = Excursion.new({ attributes: {} })
+  end
 
   def create
-    ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
-    flash[:notice] = "You have successfully created an Excursion!"
-    redirect_to dashboard_path
+    if missing_params.present?
+      @excursion = Excursion.new({ attributes: excursion_params })
+      flash[:notice] = missing_params*"\n"
+      render :new, obj: @excursion
+    else
+      response = ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
+      flash[:notice] = response
+      redirect_to dashboard_path
+    end
   end
 
   def edit
@@ -27,5 +35,12 @@ class ExcursionsController < ApplicationController
 
   def excursion_params
     params.permit(:title, :description, :location, :place_id)
+  end
+
+  def missing_params
+    keys = excursion_params.except(:place_id).select { |_,v| v.blank? }.keys
+    keys.map do |param|
+      param.capitalize + ' can\'t be blank.'
+    end
   end
 end
