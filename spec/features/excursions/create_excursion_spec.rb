@@ -42,4 +42,29 @@ describe 'Excursion Create' do
       expect(page).not_to have_css('#map')
     end
   end
+
+  describe 'sad path' do
+    it 'validates that all fields have been filled out' do
+      visit excursions_new_path
+
+      fill_in :title, with: "Cake Cafe"
+      click_button('Create Excursion')
+
+      expect(current_path).to eq(excursions_new_path)
+      expect(page).to have_content('Location can\'t be blank')
+      expect(page).to have_content('Description can\'t be blank')
+      expect(page.find_field(:title).value).to eq("Cake Cafe")
+    end
+
+    it 'displays an error message if the backend call is unsucessful' do
+      visit excursions_new_path
+      fill_in :title, with: "Green Apple Books"
+      fill_in :description, with: "Thousands of books"
+      fill_in :location, with: "506 Clement St, San Francisco, CA 94118"
+      click_button('Create Excursion')
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("We're sorry, we were unable to save your excursion. Please try again later.")
+    end
+  end
 end
