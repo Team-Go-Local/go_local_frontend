@@ -4,13 +4,13 @@
 <br/>
 <h1>Edit Excursion</h1>
 
-<%= form_with url: '/dashboard', method: 'get', local: true do |f|  %>
+<%= form_with url: excursions_update_path(@excursion.id), method: 'patch', local: true do |f|  %>
   <%= f.label :title, 'Excursion Title' %>
-  <%= f.text_field :title %><br /><br />
+  <%= f.text_field :title, value: @excursion.title %><br /><br />
   <%= f.label :description, 'Excursion Description' %>
-  <%= f.text_field :description %><br /><br />
+  <%= f.text_field :description, value: @excursion.description %><br /><br />
   <%= f.label :location, 'Excursion Location' %>
-  <%= f.text_field :location %><br /><br />
+  <%= f.text_field :location, value: @excursion.location %><br /><br />
   <%= f.submit 'Update Excursion' %>
 <% end %>
 

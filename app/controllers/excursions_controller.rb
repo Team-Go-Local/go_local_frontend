@@ -7,22 +7,25 @@ class ExcursionsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def edit; end
+  def edit
+    @excursion = ExcursionsFacade.get_excursion(params[:id])
+  end
 
   def update
-    {
-      title: params[:title],
-      description: params[:description],
-      location: params[:location]
-    }
-    # patch "backend.herokuapp.com/users/#{current_user.id}/excursions/:excursion_id?#{params_2.to_query}""
+    ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
     flash[:notice] = 'You have successfully edited an Excursion!'
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    ExcursionsFacade.destroy_excursion(current_user.id, params[:id])
+    flash[:notice] = 'You have successfully deleted an Excursion!'
     redirect_to dashboard_path
   end
 
   private
 
   def excursion_params
-    params.permit(:title, :description, :location)
+    params.permit(:title, :description, :location, :place_id)
   end
 end

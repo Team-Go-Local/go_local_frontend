@@ -3,19 +3,25 @@
 </div>
 
 <div class="col text-center">
-  <button type="button" class="btn btn-primary">Explore</button>
+  <form action="/explore">
+    <button type="button" class="btn btn-primary">Explore</button>
+  </form>
 </div><br/>
 <br/>
 <br/>
 <br/>
+
 <div class="container">
   <div class="row">
     <div class="col">
       <section id='traveller'>
         <h2>Traveller</h2>
         <p><b>Favorites/Saved Excursions</b></p>
-      <section id='saved_excursion'>
+        <section id='saved_excursion'>
+        </section>
+      </section>
     </div>
+
 
     <div class="col">
       <section id='local'>
@@ -41,3 +47,23 @@
 <footer>
   <span>Photo by <a href="https://unsplash.com/@photoripey?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ibrahim Rifath</a> on <a href="https://unsplash.com/s/photos/free?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 </footer>
+=======
+<section id='local'>
+<h2>Local</h2>
+  <h3>Local Excursions</h3>
+  <h3><%= button_to 'Add Excursions', excursions_new_path, method: :get %></h3>
+  <section id='my_excursions'>
+    <% @excursions.each do |excursion| %>
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <h4 class="card-title"><%= excursion.title %></h4>
+          <p class="card-text"><%= excursion.description %></p>
+          <%= button_to 'Edit', excursions_edit_path(excursion.id), method: :get %>
+          <%= button_to 'Delete', excursions_destroy_path(excursion.id), method: :delete %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</section>
+>>>>>>> 5877db91bf9537db90642e3818697fad72a4550c
