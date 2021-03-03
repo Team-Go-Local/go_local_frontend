@@ -11,7 +11,7 @@ describe 'welcome page' do
 
       expect(page).to have_content("Go Local")
       user = create(:omniauth_mock_user)
-      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
+      stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}")
 
       within('.login') { click_link }
       

@@ -63,7 +63,7 @@ RSpec.describe ExcursionsFacade do
     describe "list all excursions" do 
       it "can receive a list of all excursions" do 
         json_response = File.read('spec/fixtures/all_excursions.json')
-        stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
+        stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
   
         json_data = ExcursionsFacade.list_all_excursions
 
