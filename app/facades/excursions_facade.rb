@@ -1,20 +1,31 @@
 class ExcursionsFacade
   class << self
     def create_excursion(params)
-      ExcursionsService.create_excursion(params)
+      status = ExcursionsService.create_excursion(params)
+      messages(status, 'create')
+    end
+
+    def update_excursion(excursion_params, user_id, excursion_id)
+      status = ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
+      messages(status, 'update')
+    end
+
+    def destroy_excursion(user_id, excursion_id)
+      status = ExcursionsService.destroy_excursion(user_id, excursion_id)
+      messages(status, 'delete')
+    end
+
+    def messages(status, action)
+      if [200, 201].include?(status)
+        "You have successfully #{action}d an Excursion!"
+      else
+        "We're sorry, we were unable to #{action} your excursion. Please try again later."
+      end
     end
 
     def get_excursion(id)
       data = ExcursionsService.get_excursion(id)
       Excursion.new(data[:data])
-    end
-
-    def update_excursion(excursion_params, user_id, excursion_id)
-      ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
-    end
-
-    def destroy_excursion(user_id, excursion_id)
-      ExcursionsService.destroy_excursion(user_id, excursion_id)
     end
 
     def list_all_excursions
