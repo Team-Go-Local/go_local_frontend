@@ -7,6 +7,7 @@ describe 'Explore Landing Page' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
+    allow(DashboardFacade).to receive(:user_excursions).and_return([])
 
     visit root_path
     within('.login') { click_link }
