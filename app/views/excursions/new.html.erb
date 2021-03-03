@@ -1,4 +1,4 @@
-<div class="excursion">
+<div class="greet">
   <%= javascript_tag do %>
     window.mapKey = "<%=j ENV['GOOGLE_MAP_KEY'] %>"
   <% end %>
@@ -17,22 +17,22 @@
 </div>
 
 <div class="form-group">
-  <%= form_with url: '/excursions/create', method: 'get', local: true do |f|  %>
+  <%= form_with url: '/excursions/create', method: :post, local: true do |f|  %>
     <%= f.hidden_field :place_id, value: 'string' %>
-    <%= f.label :title %>
+    <%= f.label :title, 'Excursion Title', style: "color: #e4e8de" %>
     <%= f.text_field :title, placeholder: 'Title...' %><br /><br />
     
-    <%= f.label :location, 'Excursion Location'%>
+    <%= f.label :location, 'Excursion Location', style: "color: #e4e8de" %>
     <%= f.text_field :location, placeholder: 'Location...' %><br /><br />
     
-    <%= f.label :description, 'Excursion Description' %>
+    <%= f.label :description, 'Excursion Description', style: "color: #e4e8de" %>
     <%= f.text_area :description, placeholder: 'Description...' %><br /><br />
     
     <%= f.submit 'Create Excursion' %>
   <% end %>
 </div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&libraries=places&callback=initAutocomplete" async defer></script>
 
 
 <footer>
