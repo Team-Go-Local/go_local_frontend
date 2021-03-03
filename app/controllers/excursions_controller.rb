@@ -9,8 +9,7 @@ class ExcursionsController < ApplicationController
       flash[:notice] = missing_params*"\n"
       render :new, obj: @excursion
     else
-      response = ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
-      flash[:notice] = response
+      flash[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
       redirect_to dashboard_path
     end
   end
@@ -20,9 +19,14 @@ class ExcursionsController < ApplicationController
   end
 
   def update
-    ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
-    flash[:notice] = 'You have successfully edited an Excursion!'
-    redirect_to dashboard_path
+    if missing_params.present?
+      @excursion = Excursion.new({ attributes: excursion_params })
+      flash[:notice] = missing_params*"\n"
+      render :new, obj: @excursion
+    else
+      flash[:notice] = ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
+      redirect_to dashboard_path
+    end
   end
 
   def destroy

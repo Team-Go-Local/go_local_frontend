@@ -48,7 +48,7 @@ RSpec.describe ExcursionsFacade do
       }
       response = ExcursionsFacade.update_excursion(excursion_params, 2, 7)
 
-      expect(response).to eq(200)
+      expect(response).to eq("You have successfully updated your Excursion!")
     end
   end
   describe '.destroy_excursion' do

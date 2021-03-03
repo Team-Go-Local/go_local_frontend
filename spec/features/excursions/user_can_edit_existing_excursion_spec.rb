@@ -5,7 +5,7 @@ describe 'Excursion Edit' do
     it 'can edit an excursion and be redirected to dashboard' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      allow(ExcursionsFacade).to receive(:update_excursion)
+      allow(ExcursionsService).to receive(:update_excursion).and_return(200)
 
       excursion = Excursion.new({ id: 5,
                                   attributes: {
@@ -34,7 +34,7 @@ describe 'Excursion Edit' do
       click_button('Update Excursion')
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("You have successfully edited an Excursion!")
+      expect(page).to have_content("You have successfully updated your Excursion!")
       within('#my_excursions') do
         expect(page).to have_content(excursion.title)
       end
@@ -79,7 +79,7 @@ describe 'Excursion Edit' do
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
       allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
 
-      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
+      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
 
       visit excursions_edit_path(excursion.id)
       fill_in :title, with: "Magnolia Bridge"

@@ -15,7 +15,12 @@ class ExcursionsFacade
     end
 
     def update_excursion(excursion_params, user_id, excursion_id)
-      ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
+      status = ExcursionsService.update_excursion(excursion_params, user_id, excursion_id)
+      if status == 200
+        "You have successfully updated your Excursion!"
+      else
+        "We're sorry, we were unable to save your excursion. Please try again later."
+      end
     end
 
     def destroy_excursion(user_id, excursion_id)

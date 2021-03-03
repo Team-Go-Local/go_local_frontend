@@ -21,6 +21,7 @@ function onPlaceChanged() {
     document.getElementById('title').value = place.name;
     document.getElementById('location').value = place.formatted_address;
     document.getElementById('place_id').value = place.place_id;
+    document.getElementById('geometry').innerHTML = place.geometry.location;
     document.getElementById('map').style.display = 'inline-block';
     document.getElementById('map').setAttribute('src', `https://www.google.com/maps/embed/v1/place?key=${mapKey}&q=place_id:${place.place_id}&zoom=12`);
   }
