@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
       user.email = email
       user.token = token
       user.name = name
+      Faraday.post("https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
     end
-    Faraday.post("https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
     session[:id] = user.id
     redirect_to dashboard_path
   end
