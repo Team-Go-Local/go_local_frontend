@@ -13,7 +13,17 @@
 <h2>Local</h2>
   <h3>Local Excursions</h3>
   <h3><%= button_to 'Add Excursions', excursions_new_path, method: :get %></h3>
-  <section id='my_excursion'>
-    <h4>Denver, CO <%= button_to 'Delete' %> <%= button_to 'Edit', excursions_edit_path, method: :get %></h4>
+  <section id='my_excursions'>
+    <% @excursions.each do |excursion| %>
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <h4 class="card-title"><%= excursion.title %></h4>
+          <p class="card-text"><%= excursion.description %></p>
+          <%= button_to 'Edit', excursions_edit_path(excursion.id), method: :get %>
+          <%= button_to 'Delete', excursions_destroy_path(excursion.id), method: :delete %>
+        </div>
+      </div>
+    <% end %>
   </section>
 </section>

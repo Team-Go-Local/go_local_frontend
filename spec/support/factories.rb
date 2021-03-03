@@ -5,9 +5,22 @@ FactoryBot.define do
     uid { Faker::Number.within(range: 100000..999999).to_s }
     token { Faker::Number.within(range: 100000..999999) }
   end
+
   factory :omniauth_mock_user, parent: :user do
     email { 'john@example.com' }
     uid {'100000000000000000000'}
     token {'MOCK_OMNIAUTH_GOOGLE_TOKEN'}
+  end
+
+# The excursion factory below is for a PORO
+# To use you will need to use build
+  factory :excursion do
+    initialize_with { new(id: Faker::Number.within(range: 1..1000),
+                          attributes:
+                          { title: Faker::Coffee.blend_name,
+                            description: Faker::Coffee.notes,
+                            location: Faker::Address.city,
+                            place_id: Faker::String.random(length: 27)
+                          })}
   end
 end

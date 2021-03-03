@@ -2,23 +2,63 @@ require 'rails_helper'
 
 RSpec.describe ExcursionsFacade do
   describe '.create_excursion' do
-    it 'creates an excursion and request to the backend to store the data on the DB' do
-      json_response = File.read('spec/fixtures/excursion_response.json')
-      stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/123/excursions/create?description=Sample%20description&location=Denver,%20CO&title=Casa%20Bonita&user_id=123")
-      . with(
-        headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Faraday v1.3.0'
-        })  
-      .to_return(status: 200, body: json_response)
-  
-      excursion = ExcursionsFacade.create_excursion({title: 'Casa Bonita', description: 'Sample description', location: 'Denver, CO', user_id: 123})
+    it 'sends a post request to the excursion service' do
+      allow(ExcursionsService).to receive(:create_excursion).and_return(201)
 
-      expect(excursion).to be_an Hash
-      expect(excursion[:data][:attributes][:name]).to be_a String
-      expect(excursion[:data][:attributes][:formatted_address]).to be_a String
-      expect(excursion[:data][:attributes][:types]).to be_an Array
+      user = create(:user)
+      excursion_params = {
+        place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
+        location: "2440 18th St NW, Washington, DC, 20009, United States",
+        title: "Millie & Al's",
+        description: "Great atmosphere with skeleton siren to announce specials.",
+        user_id: user.id
+      }
+      response = ExcursionsFacade.create_excursion(excursion_params)
+
+      expect(response).to eq(201)
+    end
+  end
+  describe '.get_excursion' do
+    it 'gets excursion info from BE through service' do
+      excursion_params =
+      { data:
+            { id: 7,
+              type: "excursion",
+              attributes:
+                        { place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
+                          location: "2440 18th St NW, Washington, DC, 20009, United States",
+                          title: "Millie & Al's",
+                          description: "Great atmosphere with skeleton siren to announce specials.",
+                          user_id: 3
+                          }}}
+      allow(ExcursionsService).to receive(:get_excursion).and_return(excursion_params)
+
+      excursion = ExcursionsFacade.get_excursion(7)
+      expect(excursion).to be_an(Excursion)
+    end
+  end
+  describe '.update_excursion' do
+    it 'sends a patch request to the excursion service' do
+      allow(ExcursionsService).to receive(:update_excursion).and_return(200)
+
+      excursion_params = {
+        location: "2440 18th St NW, Washington, DC, 20009, United States",
+        title: "Millie & Al's",
+        description: "Great atmosphere with skeleton siren to announce specials."
+      }
+      response = ExcursionsFacade.update_excursion(excursion_params, 2, 7)
+
+      expect(response).to eq(200)
+    end
+  end
+  describe '.destroy_excursion' do
+    it 'sends a delete request to the the excursion service' do
+      user = create(:user)
+      excursion_id = 7
+      allow(ExcursionsService).to receive(:destroy_excursion).and_return(200)
+      response = ExcursionsFacade.destroy_excursion(user.id, excursion_id)
+
+      expect(response).to eq(200)
     end
   end
 end
