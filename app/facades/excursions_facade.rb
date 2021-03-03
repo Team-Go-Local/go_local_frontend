@@ -16,7 +16,7 @@ class ExcursionsFacade
     end
 
     def messages(status, action)
-      if status == 200 || status == 201
+      if [200, 201].include?(status)
         "You have successfully #{action}d an Excursion!"
       else
         "We're sorry, we were unable to #{action} your excursion. Please try again later."

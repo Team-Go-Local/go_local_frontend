@@ -73,4 +73,17 @@ RSpec.describe 'Show' do
       expect(current_path).to eq(explore_path)
     end
   end
+
+  describe 'sad path' do
+    it 'displays a message if the call to BE to find user\'s excursions fails' do
+      user = create(:omniauth_mock_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
+
+      visit dashboard_path
+
+      expect(page).to have_content("We're sorry, we were unable to locate your excursions. Please try again later.")
+    end
+  end
 end

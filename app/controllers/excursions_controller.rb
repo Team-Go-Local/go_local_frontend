@@ -6,10 +6,10 @@ class ExcursionsController < ApplicationController
   def create
     if missing_params.present?
       @excursion = Excursion.new({ attributes: excursion_params })
-      flash[:notice] = missing_params*"\n"
+      flash[:notice] = missing_params * "\n"
       render :new, obj: @excursion
     else
-      flash[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({user_id: current_user.id}))
+      flash[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({ user_id: current_user.id }))
       redirect_to dashboard_path
     end
   end
@@ -21,7 +21,7 @@ class ExcursionsController < ApplicationController
   def update
     if missing_params.present?
       @excursion = Excursion.new({ attributes: excursion_params })
-      flash[:notice] = missing_params*"\n"
+      flash[:notice] = missing_params * "\n"
       render :new, obj: @excursion
     else
       flash[:notice] = ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
@@ -41,9 +41,9 @@ class ExcursionsController < ApplicationController
   end
 
   def missing_params
-    keys = excursion_params.except(:place_id).select { |_,v| v.blank? }.keys
+    keys = excursion_params.except(:place_id).select { |_, v| v.blank? }.keys
     keys.map do |param|
-      param.capitalize + ' can\'t be blank.'
+      "#{param.capitalize} can't be blank."
     end
   end
 end
