@@ -85,6 +85,16 @@
    color: #3e3f3a;
    text-align: left;
    background-color: #fff;
+   background-image: url(water.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   text-align: center;
+ }
+
+ body.homepage {
+  background-color: #fff;
+  background-image: url(white.jpg);
+
  }
 
  [tabindex="-1"]:focus:not(:focus-visible) {
@@ -185,13 +195,13 @@
  }
 
  a {
-   color: #93c54b;
+   color: #6684a5;
    text-decoration: none;
    background-color: transparent;
  }
 
  a:hover {
-   color: #6b9430;
+   color: #3d5c7e;
    text-decoration: underline;
  }
 
@@ -440,9 +450,17 @@
    line-height: 1.2;
  }
 
- .display-4 {
-   font-size: 3.5rem;
+ .display-3-2 {
+   font-size: 4.5rem;
    font-weight: 300;
+   line-height: 1.2;
+   background-clip: border-box;
+   border-radius: 400px;
+ }
+
+ .display-4 {
+   font-size: 1.3rem;
+   font-weight: 500;
    line-height: 1.2;
  }
 
@@ -647,6 +665,7 @@
    -ms-flex-positive: 1;
    flex-grow: 1;
    max-width: 100%;
+   text-align: center;
  }
 
  .row-cols-1 > * {
@@ -702,6 +721,7 @@
    -ms-flex: 0 0 16.666667%;
    flex: 0 0 16.666667%;
    max-width: 16.666667%;
+   float: left;
  }
 
  .col-3 {
@@ -725,7 +745,16 @@
  .col-6 {
    -ms-flex: 0 0 50%;
    flex: 0 0 50%;
-   max-width: 50%;
+   max-width: 40%;
+   float: left;
+ }
+
+ .col-6-2 {
+   -ms-flex: 0 0 50%;
+   flex: 0 0 50%;
+   max-width: 40%;
+   float: right;
+   margin-right: 10px;
  }
 
  .col-7 {
@@ -2189,12 +2218,18 @@
  }
 
  .form-group {
-   margin-bottom: 1rem;
+   border-radius: 30px;
+   border: #solid 10px #000;
+   background-color: rgba(105,100,100,0.8);
+   width: 25.5%;
+   margin-left: auto ;
+   margin-right: auto ;
+   margin-bottom: auto ;
+   opacity: 0.8;
  }
 
  .form-text {
    display: block;
-   margin-top: 0.25rem;
  }
 
  .form-row {
@@ -2226,7 +2261,7 @@
 
  .form-check-input[disabled] ~ .form-check-label,
  .form-check-input:disabled ~ .form-check-label {
-   color: #8e8c84;
+   color: #7b7766;
  }
 
  .form-check-label {
@@ -4366,7 +4401,7 @@
    align-items: center;
    -ms-flex-pack: justify;
    justify-content: space-between;
-   padding: 0.5rem 1rem;
+   padding: 0.5rem 0.5rem;
  }
 
  .navbar .container,
@@ -4383,9 +4418,9 @@
 
  .navbar-brand {
    display: inline-block;
-   padding-top: 0.335938rem;
-   padding-bottom: 0.335938rem;
-   margin-right: 1rem;
+   padding-top: 0rem;
+   padding-bottom: 0rem;
+   margin-right: 0;
    font-size: 1.09375rem;
    line-height: inherit;
    white-space: nowrap;
@@ -4793,6 +4828,7 @@
    background-clip: border-box;
    border: 1px solid rgba(223, 215, 202, 0.75);
    border-radius: 0.25rem;
+   margin: 0 auto;
  }
 
  .card > hr {
@@ -5316,6 +5352,27 @@
    background-color: #f8f5f0;
    border-radius: 0.3rem;
    min-height: 540px;
+ }
+
+ .welcome {
+   padding: 100px;
+   border-radius: 0.3rem;
+   margin: 100px;
+   font-size: 4.5rem;
+   font-weight: 300;
+   line-height: 1.2;
+   background-clip: border-box;
+   border-radius: 400px;
+   color: #fff;
+ }
+
+ .greet {
+   padding: 50px;
+   border-radius: 0.3rem;
+   margin: 50px;
+   background-clip: border-box;
+   border-radius: 10px;
+   color: #fff;
  }
 
  @media (min-width: 576px) {

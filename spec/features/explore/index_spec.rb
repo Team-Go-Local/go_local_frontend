@@ -15,7 +15,9 @@ describe 'Explore Landing Page' do
     json_response = File.read('spec/fixtures/all_excursions.json')
     stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
     
-    click_button "Explore"
+    within('#explore') do
+      click_link "Explore"
+    end
 
     expect(current_path).to eq('/explore')
     expect(page).to have_button("Search by City")

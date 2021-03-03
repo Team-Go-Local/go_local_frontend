@@ -1,29 +1,49 @@
-<h1>Welcome, <%= current_user.name %></h1>
-<h1><%= button_to 'Explore', explore_path, method: :get %></h1>
-<section id='traveller'>
-<h2>Traveller</h2>
-  <h3>Favorites/Saved Excursions</h3>
-  <section id='saved_excursion'>
+<div class="welcome"
+  <h1>Welcome, <%= current_user.name %></h1>
+</div>
 
-  </section>
-    <h2>Travelboards/organize by city/location</h2>
-  </section>
+<div class="col text-center" id='explore'>
+  <a href="/explore" type="button" class="btn btn-primary">Explore</a>
+</div><br/>
+<br/>
+<br/>
+<br/>
 
-<section id='local'>
-<h2>Local</h2>
-  <h3>Local Excursions</h3>
-  <h3><%= button_to 'Add Excursions', excursions_new_path, method: :get %></h3>
-  <section id='my_excursions'>
-    <% @excursions.each do |excursion| %>
-      <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header"></div>
-        <div class="card-body">
-          <h4 class="card-title"><%= excursion.title %></h4>
-          <p class="card-text"><%= excursion.description %></p>
-          <%= button_to 'Edit', excursions_edit_path(excursion.id), method: :get %>
-          <%= button_to 'Delete', excursions_destroy_path(excursion.id), method: :delete %>
-        </div>
-      </div>
-    <% end %>
-  </section>
-</section>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section id='traveller'>
+        <h2>Traveller</h2>
+        <p><b>Favorites/Saved Excursions</b></p>
+        <section id='saved_excursion'>
+        </section>
+      </section>
+    </div>
+
+
+    <div class="col">
+      <section id='local'>
+          <h2>Local
+          <a href="/excursions/new" role="button" class="btn btn-outline-primary float-right">Add Excursions</a></h2>
+      </section>
+        
+        <section id='my_excursions'>
+          <% @excursions.each do |excursion| %>
+            <div class="card border-secondary mb-3" style="max-width: 15rem;">
+              <div class="card-header">My Excursions</div>
+              <div class="card-body">
+                <h4 class="card-title"><%= excursion.title %></h4>
+                <p class="card-text"><%= excursion.description %></p>
+                <%= link_to 'Delete', excursions_destroy_path(excursion.id), method: :delete, class: "card-link" %>
+                <%= link_to 'Edit', excursions_edit_path(excursion.id), method: :get, class: "card-link" %>
+              </div>
+            </div>
+          <% end %>
+        </section>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Photo by <a href="https://unsplash.com/@photoripey?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ibrahim Rifath</a> on <a href="https://unsplash.com/s/photos/free?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+</footer>

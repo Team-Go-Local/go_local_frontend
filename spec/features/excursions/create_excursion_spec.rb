@@ -35,7 +35,7 @@ describe 'Excursion Create' do
 
       visit excursions_new_path
 
-      expect(page).to have_field(:place, placeholder: 'Enter a place')
+      expect(page).to have_field(:place, placeholder: 'Search...')
       expect(page.find_field(:title).value).to be nil
       expect(page.find_field(:location).value).to be nil
       expect(page.find_field(:description).value).to be_empty

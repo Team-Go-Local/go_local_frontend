@@ -1,28 +1,40 @@
-<%= javascript_tag do %>
-  window.mapKey = "<%=j ENV['GOOGLE_MAP_KEY'] %>"
-<% end %>
-<%= javascript_include_tag 'new_excursion' %>
+<div class="greet">
+  <%= javascript_tag do %>
+    window.mapKey = "<%=j ENV['GOOGLE_MAP_KEY'] %>"
+  <% end %>
+  <%= javascript_include_tag 'new_excursion' %>
 
-<h1>Create Excursion</h1>
-
-<%= form_with do |f| %>
-  <%= f.text_field :place, id: 'autocomplete', placeholder: 'Enter a place', style: 'width:50%' %>
-<% end %><br>
-
-<div>
-  <iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:none"></iframe>
+  <h1>Create Excursion</h1>
+  <h4 class="display-4">Enter Destination in the Search Bar Below</h4>
+    <%= form_with method: 'get', local: true do |f| %>
+    <%= f.text_field :place, id: 'autocomplete', placeholder: 'Search...',
+    style: 'width:50%' %>
+  <% end %><br>
+  <span id='test'></span>
+  <div>
+    <iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:none"></iframe>
+  </div>
 </div>
 
-<%= form_with url: excursions_create_path, local: true do |f|  %>
-  <%= f.hidden_field :place_id, value: @excursion.place_id %>
-  <%= f.hidden_field :geometry %>
-  <%= f.label :title, 'Excursion Title' %>
-  <%= f.text_field :title, value: @excursion.title %><br /><br />
-  <%= f.label :location, 'Excursion Location'%>
-  <%= f.text_field :location, value: @excursion.location %><br /><br />
-  <%= f.label :description, 'Excursion Description' %>
-  <%= f.text_area :description, value: @excursion.description %><br/><br />
-  <%= f.submit 'Create Excursion' %>
-<% end %>
+<div class="form-group">
+  <%= form_with url: '/excursions/create', method: :post, local: true do |f|  %>
+    <%= f.hidden_field :place_id, value: @excursion.place_id %>
+    <%= f.label :title, 'Excursion Title', style: "color: #e4e8de" %>
+    <%= f.text_field :title, placeholder: 'Title...', value: @excursion.title %><br /><br />
+    
+    <%= f.label :location, 'Excursion Location', style: "color: #e4e8de" %>
+    <%= f.text_field :location, placeholder: 'Location...', value: @excursion.location %><br /><br />
+    
+    <%= f.label :description, 'Excursion Description', style: "color: #e4e8de" %>
+    <%= f.text_area :description, placeholder: 'Description...', value: @excursion.description %><br /><br />
+    
+    <%= f.submit 'Create Excursion' %>
+  <% end %>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&libraries=places&callback=initAutocomplete" async defer></script>
+
+
+<footer>
+  <span>Photo by <a href="https://unsplash.com/@photoripey?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Ibrahim Rifath</a> on <a href="https://unsplash.com/s/photos/free?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+</footer>

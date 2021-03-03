@@ -19,7 +19,7 @@ describe 'Excursion Edit' do
 
       visit dashboard_path
       within('#my_excursions') do
-        click_button('Edit')
+        click_link('Edit')
       end
 
       expect(current_path).to eq(excursions_edit_path(excursion.id))
