@@ -18,7 +18,7 @@ FactoryBot.define do
   factory :excursion do
     initialize_with { new(id: Faker::Number.within(range: 1..1000),
                           attributes:
-                          { title: Faker::Coffee.blend_name,
+                          { title: Faker::Name.first_name,
                             description: Faker::Coffee.notes,
                             location: Faker::Address.city,
                             place_id: Faker::String.random(length: 27)
