@@ -37,7 +37,7 @@ describe 'Excursion Delete' do
                                 }})
 
     allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
-    stub_request(:delete, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
+    stub_request(:delete, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
 
     visit dashboard_path
     within('#my_excursions') do

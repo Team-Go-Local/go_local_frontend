@@ -79,7 +79,7 @@ describe 'Excursion Edit' do
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
       allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
 
-      stub_request(:patch, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
+      stub_request(:patch, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
 
       visit excursions_edit_path(excursion.id)
       fill_in :title, with: "Magnolia Bridge"

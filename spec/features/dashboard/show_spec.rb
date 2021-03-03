@@ -79,7 +79,7 @@ RSpec.describe 'Show' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      stub_request(:get, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
+      stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
 
       visit dashboard_path
 

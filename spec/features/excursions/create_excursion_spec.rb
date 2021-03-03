@@ -61,7 +61,7 @@ describe 'Excursion Create' do
     it 'displays an error message if the backend call is unsucessful' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
+      stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
       allow(DashboardFacade).to receive(:user_excursions).and_return([])
 
       visit excursions_new_path
