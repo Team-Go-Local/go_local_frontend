@@ -6,12 +6,18 @@ class SessionsController < ApplicationController
     email = user_info[:info][:email]
     token = user_info[:credentials][:token]
 
-    user = User.find_or_create_by(uid: uid) do |user|
-      user.uid = uid
-      user.email = email
-      user.token = token
-      user.name = name
-      Faraday.post("https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
+    # user = User.find_or_create_by(uid: uid) do |user|
+    #   user.uid = uid
+    #   user.email = email
+    #   user.token = token
+    #   user.name = name
+    #   Faraday.post("https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
+    # end
+    if User.exists?(uid: uid)
+      user = User.find_by(uid: uid)
+    else
+      user = User.create(name: name, uid: uid, email: email, token: token)
+      Faraday.post("https://go-local-be.herokuapp.com/api/v1/users/#{user.id}")
     end
     session[:id] = user.id
     redirect_to dashboard_path
