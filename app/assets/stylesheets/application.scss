@@ -2218,12 +2218,18 @@
  }
 
  .form-group {
-   margin-bottom: 1rem;
+   border-radius: 30px;
+   border: #solid 10px #000;
+   background-color: rgba(105,100,100,0.8);
+   width: 25.5%;
+   margin-left: auto ;
+   margin-right: auto ;
+   margin-bottom: auto ;
+   opacity: 0.8;
  }
 
  .form-text {
    display: block;
-   margin-top: 0.25rem;
  }
 
  .form-row {
@@ -5360,7 +5366,7 @@
    color: #fff;
  }
 
- .excursion {
+ .greet {
    padding: 50px;
    border-radius: 0.3rem;
    margin: 50px;
