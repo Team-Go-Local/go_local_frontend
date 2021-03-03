@@ -15,22 +15,22 @@ RSpec.describe ExcursionsFacade do
       }
       response = ExcursionsFacade.create_excursion(excursion_params)
 
-      expect(response).to eq(201)
+      expect(response).to eq("You have successfully created an Excursion!")
     end
   end
   describe '.get_excursion' do
     it 'gets excursion info from BE through service' do
-      excursion_params =
-      { data:
-            { id: 7,
-              type: "excursion",
-              attributes:
-                        { place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
-                          location: "2440 18th St NW, Washington, DC, 20009, United States",
-                          title: "Millie & Al's",
-                          description: "Great atmosphere with skeleton siren to announce specials.",
-                          user_id: 3
-                          }}}
+      excursion_params = {
+        data: {
+          id: 7,
+          type: "excursion",
+          attributes: {
+            place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
+            location: "2440 18th St NW, Washington, DC, 20009, United States",
+            title: "Millie & Al's",
+            description: "Great atmosphere with skeleton siren to announce specials.",
+            user_id: 3
+        } } }
       allow(ExcursionsService).to receive(:get_excursion).and_return(excursion_params)
 
       excursion = ExcursionsFacade.get_excursion(7)
@@ -48,7 +48,7 @@ RSpec.describe ExcursionsFacade do
       }
       response = ExcursionsFacade.update_excursion(excursion_params, 2, 7)
 
-      expect(response).to eq(200)
+      expect(response).to eq("You have successfully updated an Excursion!")
     end
   end
   describe '.destroy_excursion' do
@@ -58,10 +58,11 @@ RSpec.describe ExcursionsFacade do
       allow(ExcursionsService).to receive(:destroy_excursion).and_return(200)
       response = ExcursionsFacade.destroy_excursion(user.id, excursion_id)
 
-      expect(response).to eq(200)
+      expect(response).to eq("You have successfully deleted an Excursion!")
     end
-    describe "list all excursions" do 
-      it "can receive a list of all excursions" do 
+
+    describe "list all excursions" do
+      it "can receive a list of all excursions" do
         json_response = File.read('spec/fixtures/all_excursions.json')
         stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
   
