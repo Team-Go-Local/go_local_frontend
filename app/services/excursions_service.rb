@@ -13,7 +13,7 @@ class ExcursionsService
     end
 
     def list_all_excursions
-      response = conn.get("/api/v1/excursions")
+      response = conn.get('/api/v1/excursions')
       parse_data(response)
     end
 
@@ -32,7 +32,7 @@ class ExcursionsService
     def destroy_excursion(user_id, excursion_id)
       conn.delete("api/v1/users/#{user_id}/excursions/#{excursion_id}").status
     end
-    
+
     private
 
     def conn

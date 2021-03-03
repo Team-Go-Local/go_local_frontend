@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       user = User.create(name: name, uid: uid, email: email, token: token)
       Faraday.post("https://go-local-be.herokuapp.com/api/v1/users/#{user.id}")
     end
+
     session[:id] = user.id
     redirect_to dashboard_path
   end
