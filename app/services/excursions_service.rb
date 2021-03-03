@@ -2,7 +2,7 @@ class ExcursionsService
   class << self
     def create_excursion(params)
       conn.post("api/v1/users/#{params[:user_id]}/excursions") do |request|
-        request.body = {excursion: params}.to_json
+        request.body = {excursion: params}
       end.status
     end
 
@@ -34,7 +34,7 @@ class ExcursionsService
     private
 
     def conn
-      @conn ||= Faraday.new(url: "https://tranquil-refuge-53915.herokuapp.com/")
+      @conn ||= Faraday.new(url: "https://go-local-be.herokuapp.com/")
     end
 
     def parse_data(response)
