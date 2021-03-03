@@ -9,7 +9,7 @@ RSpec.describe "user logs in", type: :feature do
 
     stub_omniauth
     user = create(:omniauth_mock_user)
-    stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
+    stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
 
     visit root_path
     within('.login') { click_link }
@@ -25,7 +25,7 @@ RSpec.describe "user logs in", type: :feature do
     stub_omniauth
 
     user = create(:omniauth_mock_user)
-    stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
+    stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}")
     user_count = User.count
 
     expect(user_count).to eq(1)
@@ -43,7 +43,7 @@ RSpec.describe "user logs in", type: :feature do
     stub_omniauth
     user = create(:omniauth_mock_user)
 
-    stub_request(:post, "https://tranquil-refuge-53915.herokuapp.com/api/v1/users/#{user.id}")
+    stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}")
 
     user_count = User.count
 

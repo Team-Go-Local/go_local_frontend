@@ -5,4 +5,4 @@ class ExploreController < ApplicationController
     @excursions = []
     flash[:notice] = "We're sorry, we were unable to locate the content you requested. Please try again later."
   end
-end
+end 

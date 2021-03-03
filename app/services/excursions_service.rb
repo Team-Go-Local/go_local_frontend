@@ -1,5 +1,6 @@
 class ExcursionsService
   class << self
+    
     def get_excursion(id)
       response = conn.get("api/v1/excursions/#{id}")
       parse_data(response)
@@ -34,7 +35,7 @@ class ExcursionsService
     private
 
     def conn
-      @conn ||= Faraday.new(url: 'https://tranquil-refuge-53915.herokuapp.com/')
+      @conn ||= Faraday.new(url: "https://go-local-be.herokuapp.com/")
     end
 
     def parse_data(response)
