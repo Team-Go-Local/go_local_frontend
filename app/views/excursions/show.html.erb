@@ -6,11 +6,19 @@
 <div class="excursion-group">
   <div class="excursion-details" >
     <p><b>Name: </b><%= @excursion.name %></p>
+    <% if @excursion.business_status %>
     <p><small>Status: <%= @excursion.business_status.capitalize %></small></p>
+    <% end %>
     <p><b>Local's Description: </b><%= @excursion.description %></p>
     <p><b>Address: </b><%= @excursion.address %></p>
-    <p><b>Hours: </b><%= @excursion.opening_hours %></p>
+    <% if @excursion.opening_hours %>
+    <p><b>Hours: </b><%= @excursion.opening_hours.join(', ') %></p>
+    <% end %>
+    <% if @excursion.website %>
     <p><b>Website: </b><%= link_to @excursion.website, @excursion.website, style: "color: #CFFEBA" %></p>
+    <% else %>
+    <p><b>Website Does Not Exist</p></b>
+    <% end %>
     <p><b>Date Last Updated: </b><%= @excursion.updated_at.to_date.strftime('%^B %-d %Y') %></p>
   </div>
 </div>
