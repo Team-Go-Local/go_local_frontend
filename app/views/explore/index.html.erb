@@ -23,7 +23,11 @@
         <div class="card-body">
         <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
         <p><%= excursion.description %></p>
-        <%=link_to "Save", favorite_path(excursion.id), method: :post %>
+        <% if @favorited_excursions.include?(excursion.id) %>
+          <%=link_to "Unsave", unfavorite_path(excursion.id), method: :delete %>
+        <% else %>
+          <%=link_to "Save", favorite_path(excursion.id), method: :post %>
+        <% end %>
       </div>
     </div>
   <% end %>
