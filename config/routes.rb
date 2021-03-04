@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get '/excursions/new', to: 'excursions#new'
+  get '/excursions/:id', to: 'excursions#show', as: :excursions_show
   post '/excursions/create', to: 'excursions#create'
   get '/excursions/edit/:id', to: 'excursions#edit', as: :excursions_edit
   patch '/excursions/:id', to: 'excursions#update', as: :excursions_update
