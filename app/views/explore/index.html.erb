@@ -7,7 +7,7 @@
 
 <h2>Search Results </h2>
 <% @excursions.each do |excursion| %>
-  <p><%= excursion.title %></p>
+  <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
   <p><%= excursion.description %></p>
   <h2><%=button_to "Save" %></h2>
 <% end %>

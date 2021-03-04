@@ -25,6 +25,7 @@ describe 'Explore Landing Page' do
     json_data = JSON.parse(json_response, symbolize_names: true)
 
     expect(page).to have_content(json_data[:data].first[:attributes][:title])
+    expect(page).to have_link(json_data[:data].first[:attributes][:title])
     expect(page).to have_content(json_data[:data].first[:attributes][:description])
     expect(page).to have_button("Save")
   end
