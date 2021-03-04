@@ -44,5 +44,9 @@ class ExcursionsFacade
       data = ExcursionsService.list_all_excursions
       data[:meta][:cities].reject(&:nil?)
     end
+
+    def favorite_excursion(user_id, excursion_id)
+      ExcursionsService.favorite_excursion(user_id, excursion_id)
+    end
   end
 end
