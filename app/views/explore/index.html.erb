@@ -21,7 +21,7 @@
     <div class="card border-secondary mb-3" style="max-width: 15rem;">
       <div class="card-header">Excursion</div>
         <div class="card-body">
-        <p><%= excursion.title %></p>
+        <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
         <p><%= excursion.description %></p>
         <%=link_to "Save" %>
       </div>
