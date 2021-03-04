@@ -2,6 +2,10 @@ class ExploreController < ApplicationController
   def index
     @excursions = ExcursionsFacade.list_all_excursions
     @cities = ExcursionsFacade.city_list
+    # Poros for favorited [excur 1, excurs 2]
+    @favorited_excursions = DashboardFacade.favorited_excursions(current_user.id).map do |excursion|
+      excursion.id
+    end
   rescue JSON::ParserError
     @excursions = []
     @cities = []
