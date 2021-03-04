@@ -14,14 +14,28 @@ describe 'Excursion Show' do
         within('.login') { click_link }
 
         visit excursions_show_path(excursion_id)
-      
+  
         expect(current_path).to eq(excursions_show_path(excursion_id))
         expect(page).to have_css('.excursion-title')
         expect(page).to have_css('.excursion-description')
-        expect(page).to have_css('.excursion-location')
+        expect(page).to have_css('.excursion-updated_at')
+        expect(page).to have_css('.excursion-address')
+        expect(page).to have_css('.excursion-name')
+        expect(page).to have_css('.excursion-types')
+        expect(page).to have_css('.excursion-phone_number')
+        expect(page).to have_css('.excursion-website')
+        expect(page).to have_css('.excursion-business_status')
+        expect(page).to have_css('.excursion-opening_hours')
         expect('.excursion-title').to_not be_empty 
         expect('.excursion-description').to_not be_empty 
-        expect('.excursion-location').to_not be_empty 
+        expect('.excursion-updated_at').to_not be_empty 
+        expect('.excursion-address').to_not be_empty 
+        expect('.excursion-name').to_not be_empty 
+        expect('.excursion-types').to_not be_empty 
+        expect('.excursion-phone_number').to_not be_empty 
+        expect('.excursion-website').to_not be_empty 
+        expect('.excursion-business_status').to_not be_empty 
+        expect('.excursion-opening_hours').to_not be_empty 
       end 
     end 
   end 
