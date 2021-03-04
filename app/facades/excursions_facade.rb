@@ -25,7 +25,7 @@ class ExcursionsFacade
 
     def get_excursion(id)
       data = ExcursionsService.get_excursion(id)
-      Excursion.new(data[:data])
+      ExcursionDetails.new(data[:data])
     end
 
     def list_all_excursions
