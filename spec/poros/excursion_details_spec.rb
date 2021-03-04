@@ -28,7 +28,7 @@ RSpec.describe ExcursionDetails do
               "Sunday: 8:00 AM – 3:00 PM"]
               }
             }
-           
+
 
     excursion_details = ExcursionDetails.new(data)
 
@@ -40,11 +40,11 @@ RSpec.describe ExcursionDetails do
     expect(excursion_details.nearest_city).to eq(data[:attributes][:nearest_city])
     expect(excursion_details.address).to eq(data[:attributes][:formatted_address])
     expect(excursion_details.name).to eq(data[:attributes][:name])
-    expect(excursion_details.types).to eq(data[:attributes][:types].join(", "))
+    expect(excursion_details.types).to eq(data[:attributes][:types])
     expect(excursion_details.phone_number).to eq(data[:attributes][:phone_number])
     expect(excursion_details.website).to eq(data[:attributes][:website])
     expect(excursion_details.business_status).to eq(data[:attributes][:business_status])
-    expect(excursion_details.opening_hours).to eq(data[:attributes][:opening_hours].join(", "))
+    expect(excursion_details.opening_hours).to eq(data[:attributes][:opening_hours])
     expect(excursion_details.id).to eq(data[:id])
   end
 end

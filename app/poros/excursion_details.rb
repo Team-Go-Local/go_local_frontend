@@ -1,18 +1,18 @@
 class ExcursionDetails
-  attr_reader :id, 
-              :title, 
+  attr_reader :id,
+              :title,
               :description,
               :updated_at,
-              :place_id, 
-              :address, 
+              :place_id,
+              :address,
               :nearest_city,
-              :name, 
-              :types, 
-              :phone_number, 
-              :website, 
-              :business_status, 
+              :name,
+              :types,
+              :phone_number,
+              :website,
+              :business_status,
               :opening_hours
-           
+
   def initialize(data)
     @id = data[:id]
     @title = data[:attributes][:title]
@@ -22,10 +22,10 @@ class ExcursionDetails
     @nearest_city = data[:attributes][:nearest_city]
     @address = data[:attributes][:formatted_address]
     @name = data[:attributes][:name]
-    @types = data[:attributes][:types].join(", ")
+    @types = data[:attributes][:types]
     @phone_number = data[:attributes][:formatted_phone_number]
     @website = data[:attributes][:website]
     @business_status = data[:attributes][:business_status]
-    @opening_hours = data[:attributes][:opening_hours].join(", ")
+    @opening_hours = data[:attributes][:opening_hours]
   end
 end

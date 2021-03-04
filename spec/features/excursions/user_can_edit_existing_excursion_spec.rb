@@ -15,7 +15,7 @@ describe 'Excursion Edit' do
                                   }})
 
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
-      allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
+      allow(ExcursionsFacade).to receive(:edit_excursion).and_return(excursion)
       allow(DashboardFacade).to receive(:favorited_excursions).and_return([])                           
       visit dashboard_path
       within('#my_excursions') do
@@ -53,7 +53,7 @@ describe 'Excursion Edit' do
                                   location: 'Harding Drive, New Orleans, LA, USA'
                                   }})
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
-      allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
+      allow(ExcursionsFacade).to receive(:edit_excursion).and_return(excursion)
       allow(ExcursionsFacade).to receive(:update_excursion)
 
       visit excursions_edit_path(excursion.id)
@@ -77,11 +77,12 @@ describe 'Excursion Edit' do
                                   location: 'Harding Drive, New Orleans, LA, USA'
                                   }})
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
-      allow(ExcursionsFacade).to receive(:get_excursion).and_return(excursion)
+      allow(ExcursionsFacade).to receive(:edit_excursion).and_return(excursion)
       allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
-      stub_request(:patch, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
 
+      stub_request(:patch, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
       visit excursions_edit_path(excursion.id)
+
       fill_in :title, with: "Magnolia Bridge"
       click_button('Update Excursion')
 
