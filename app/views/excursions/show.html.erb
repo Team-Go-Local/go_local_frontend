@@ -17,6 +17,8 @@
   <h1> Address: <%= @excursion.address %></h1>
 </div>
 
+<iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:inline-block" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>&q=place_id:<%= @excursion.place_id %>&zoom=12"></iframe>
+
 <div class="excursion-name">
   <h1> Name: <%= @excursion.name %></h1>
 </div>

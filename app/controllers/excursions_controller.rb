@@ -3,17 +3,17 @@ class ExcursionsController < ApplicationController
     @excursion = Excursion.new({ attributes: {} })
   end
 
-  def show 
+  def show
    @excursion = ExcursionsFacade.get_excursion(params[:id])
   end
 
   def create
     if missing_params.present?
       @excursion = Excursion.new({ attributes: excursion_params })
-      flash[:notice] = missing_params * "\n"
+      flash.now[:notice] = missing_params * "\n"
       render :new, obj: @excursion
     else
-      flash[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({ user_id: current_user.id }))
+      flash.now[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({ user_id: current_user.id }))
       redirect_to dashboard_path
     end
   end
