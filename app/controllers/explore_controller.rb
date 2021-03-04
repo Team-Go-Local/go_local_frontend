@@ -5,7 +5,7 @@ class ExploreController < ApplicationController
   rescue JSON::ParserError
     @excursions = []
     @cities = []
-    flash[:notice] = "We're sorry, we were unable to locate the content you requested. Please try again later."
+    flash.now[:notice] = "We're sorry, we were unable to locate the content you requested. Please try again later."
   end
 
   def search
@@ -14,7 +14,7 @@ class ExploreController < ApplicationController
   rescue JSON::ParserError
     @excursions = []
     @cities = []
-    flash[:notice] = "We're sorry, we were unable to locate the content you requested. Please try again later."
+    flash.now[:notice] = "We're sorry, we were unable to locate the content you requested. Please try again later."
   ensure
     render :index
   end

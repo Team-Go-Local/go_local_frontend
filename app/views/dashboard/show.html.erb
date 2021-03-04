@@ -16,6 +16,15 @@
         <h2>Traveller</h2>
         <p><b>Favorites/Saved Excursions</b></p>
         <section id='saved_excursion'>
+          <% @favorites.each do |favorite| %>
+            <div class="card border-secondary mb-3" style="max-width: 15rem;">
+              <div class="card-header">My Favorite Excursions</div>
+              <div class="card-body">
+                <h4 class="card-title"><%= favorite.title %></h4>
+                <p class="card-text"><%= favorite.description %></p>
+              </div>
+            </div>
+          <% end %>
         </section>
       </section>
     </div>
