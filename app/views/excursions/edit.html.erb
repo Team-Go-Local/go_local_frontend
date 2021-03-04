@@ -5,12 +5,13 @@
 <h1>Edit Excursion</h1>
 
 <iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:inline-block" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>&q=place_id:<%= @excursion.place_id %>&zoom=12"></iframe>
-
 <%= form_with url: excursions_update_path(@excursion.id), method: 'patch', local: true do |f|  %>
+  <%= f.hidden_field :place_id, value: @excursion.place_id %>
+  <%= f.hidden_field :id, value: @excursion.id %>
   <%= f.label :title, 'Excursion Title' %>
   <%= f.text_field :title, value: @excursion.title %><br /><br />
   <%= f.label :location, 'Excursion Location' %>
-  <%= f.text_field :location, value: @excursion.address %><br /><br />
+  <%= f.text_field :location, value: @excursion.location %><br /><br />
   <%= f.label :description, 'Excursion Description' %>
   <%= f.text_area :description, value: @excursion.description %><br /><br />
   <%= f.submit 'Update Excursion' %>

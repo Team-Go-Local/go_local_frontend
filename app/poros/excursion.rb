@@ -8,7 +8,7 @@ class Excursion
 
   def initialize(data)
     @title = data[:attributes][:title]
-    @location = data[:attributes][:location]
+    @location = data[:attributes][:location] || data[:attributes][:formatted_address]
     @place_id = data[:attributes][:place_id]
     @description = data[:attributes][:description]
     @id = data[:id]

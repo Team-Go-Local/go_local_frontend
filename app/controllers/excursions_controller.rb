@@ -45,7 +45,7 @@ class ExcursionsController < ApplicationController
   end
 
   def missing_params
-    keys = excursion_params.except(:place_id).select { |_, v| v.blank? }.keys
+    keys = excursion_params.except(:place_id, :coordinates).select { |_, v| v.blank? }.keys
     keys.map do |param|
       "#{param.capitalize} can't be blank."
     end
