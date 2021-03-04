@@ -1,14 +1,25 @@
 <div class="greet">
   <h1>Explore Page </h1>
+    <div class="form-group">
+      <select class="custom-select">
+        <%= form_with method: 'get', local: true do |f| %>
+          <%= f.select (:city, options_for_select(:nearest_city), {class: "select-field"}) %> 
+          <%= f.submit 'Search by City', style: 'pull-right' %>
+        <% end%>
+      </ul>
+    </div>
 </div>
 
-<h1><%= text_field_tag :city %></h1>
-<h1><%= button_to 'Search by City' %></h1>
-
-<h2>Search Results </h2>
-<% @excursions.each do |excursion| %>
-  <p><%= excursion.title %></p>
-  <p><%= excursion.description %></p>
-  <h2><%=button_to "Save" %></h2>
-<% end %>
-
+<section id="populated-excursions">
+  <h2>Search Results </h2>
+  <% @excursions.each do |excursion| %>
+    <div class="card border-secondary mb-3" style="max-width: 15rem;">
+      <div class="card-header">Excursion</div>
+        <div class="card-body">
+        <p><%= excursion.title %></p>
+        <p><%= excursion.description %></p>
+        <%=link_to "Save" %>
+      </div>
+    </div>
+  <% end %>
+</section>
