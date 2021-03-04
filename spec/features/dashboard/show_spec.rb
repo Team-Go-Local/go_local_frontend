@@ -63,17 +63,6 @@ RSpec.describe 'Show' do
 
       expect(current_path).to eq(excursions_edit_path(excursion.id))
     end
-
-    it 'links to the explore page' do
-      allow(ExcursionsFacade).to receive(:list_all_excursions).and_return([])
-      visit dashboard_path
-
-      within('#explore') do
-        click_link('Explore')
-      end
-
-      expect(current_path).to eq(explore_path)
-    end
   end
 
   describe 'sad path' do
