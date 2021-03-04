@@ -40,6 +40,10 @@ class ExcursionsService
       parse_data(response)
     end
 
+    def favorite_excursion(user_id, excursion_id)
+      conn.post("api/v1/users/#{user_id}/favorites/#{excursion_id}")
+    end
+
     private
 
     def conn
