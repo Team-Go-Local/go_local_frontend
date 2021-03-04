@@ -1,44 +1,24 @@
-<br>
-<br>
-<br>
-<div class="excursion-title" >
-  <h1> <%= @excursion.title %> Details </h1>
+<div class="greet">
+    <h1> <%= @excursion.title %> Details </h1>
 </div>
 
-<div class="excursion-description" >
-  <h1> Description: <%= @excursion.description %></h1>
-</div>
 
-<div class="excursion-updated_at">
-  <h1> Date Last Updated: <%= @excursion.updated_at %></h1>
-</div>
-
-<div class="excursion-address">
-  <h1> Address: <%= @excursion.address %></h1>
-</div>
-
-<iframe id='map' width="450" height="250" frameborder="0" style="border:0; display:inline-block" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_MAP_KEY']%>&q=place_id:<%= @excursion.place_id %>&zoom=12"></iframe>
-
-<div class="excursion-name">
-  <h1> Name: <%= @excursion.name %></h1>
-</div>
-
-<div class="excursion-types">
-  <h1> Type: <%= @excursion.types %></h1>
-</div>
-
-<div class="excursion-phone_number">
-  <h1> Phone Number: <%= @excursion.phone_number %></h1>
-</div>
-
-<div class="excursion-website">
-<h1> Website: <%= link_to @excursion.website, @excursion.website %></h1>
-</div>
-
-<div class="excursion-business_status">
-  <h1> Status: <%= @excursion.business_status %></h1>
-</div>
-
-<div class="excursion-opening_hours">
-  <h1> Hours: <%= @excursion.opening_hours %></h1>
+<div class="excursion-group">
+  <div class="excursion-details" >
+    <p><b>Name: </b><%= @excursion.name %></p>
+    <% if @excursion.business_status %>
+    <p><small>Status: <%= @excursion.business_status.capitalize %></small></p>
+    <% end %>
+    <p><b>Local's Description: </b><%= @excursion.description %></p>
+    <p><b>Address: </b><%= @excursion.address %></p>
+    <% if @excursion.opening_hours %>
+    <p><b>Hours: </b><%= @excursion.opening_hours.join(', ') %></p>
+    <% end %>
+    <% if @excursion.website %>
+    <p><b>Website: </b><%= link_to @excursion.website, @excursion.website, style: "color: #CFFEBA" %></p>
+    <% else %>
+    <p><b>Website Does Not Exist</p></b>
+    <% end %>
+    <p><b>Date Last Updated: </b><%= @excursion.updated_at.to_date.strftime('%^B %-d %Y') %></p>
+  </div>
 </div>

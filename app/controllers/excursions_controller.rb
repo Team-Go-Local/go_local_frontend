@@ -38,6 +38,10 @@ class ExcursionsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def favorite
+    ExcursionsFacade.favorite_excursion(current_user.id, params[:id])
+  end
+
   private
 
   def excursion_params

@@ -19,11 +19,11 @@
   <h2>Search Results </h2>
   <% @excursions.each do |excursion| %>
     <div class="card border-secondary mb-3" style="max-width: 15rem;">
-      <div class="card-header">Excursion</div>
+      <div class="card-header"><%= excursion.nearest_city %></div>
         <div class="card-body">
         <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
         <p><%= excursion.description %></p>
-        <%=link_to "Save" %>
+        <%=link_to "Save", favorite_path(excursion.id), method: :post %>
       </div>
     </div>
   <% end %>

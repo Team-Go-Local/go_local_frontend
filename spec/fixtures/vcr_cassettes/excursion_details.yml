@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://go-local-be.herokuapp.com/api/v1/excursions/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 04 Mar 2021 21:51:50 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"05310fffdb3fe6e561a4ab457a235592"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c01cb14b-72c5-4573-9989-97b8c8daea16
+      X-Runtime:
+      - '0.245967'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiMSIsInR5cGUiOiJleGN1cnNpb25fZGV0YWlscyIsImF0dHJpYnV0ZXMiOnsiaWQiOjEsInRpdGxlIjoiQW1ldGh5c3QgQ29mZmVlLSBCcm9hZHdheSIsImRlc2NyaXB0aW9uIjoiTG9jYWwgbmVpZ2hib3Job29kIHNob3AgZm9yIGdyZWF0IGRyaW5rcywgbG9jYWwgcGFzdHJpZXMgZnJvbSBSZWJlbCBCcmVhZCBhbmQgYXRtb3NwaGVyZS4gT3V0c2lkZSBzZWF0aW5nIGF2YWlsYWJsZSB3aXRoIGZpcmVwbGFjZS4gU3VnZ2VzdCBhIGNhcHB1Y2Npbm8gb3IgT2F0IE1pbGsgTWF0Y2hhISIsInVwZGF0ZWRfYXQiOiIyMDIxLTAzLTA0VDE0OjQzOjQ5LjMwMVoiLCJwbGFjZV9pZCI6IkNoSUpTYnJncnJFV2NFQVIzbEZFbFpYSXZPMCIsIm5lYXJlc3RfY2l0eSI6bnVsbCwiZm9ybWF0dGVkX2FkZHJlc3MiOiIxMTExIEJyb2Fkd2F5ICMxMDEsIERlbnZlciwgQ08gODAyMDMsIFVTQSIsIm5hbWUiOiJBbWV0aHlzdCBDb2ZmZWUtIEJyb2Fkd2F5IiwidHlwZXMiOlsiY2FmZSIsImJhciIsImZvb2QiLCJwb2ludF9vZl9pbnRlcmVzdCIsInN0b3JlIiwiZXN0YWJsaXNobWVudCJdLCJwaG9uZV9udW1iZXIiOm51bGwsIndlYnNpdGUiOiJodHRwOi8vYW1ldGh5c3Rjb2ZmZWUuY28vIiwiYnVzaW5lc3Nfc3RhdHVzIjoiT1BFUkFUSU9OQUwiLCJvcGVuaW5nX2hvdXJzIjpbIk1vbmRheTogNzowMCBBTSDigJMgMTowMCBQTSIsIlR1ZXNkYXk6IDc6MDAgQU0g4oCTIDE6MDAgUE0iLCJXZWRuZXNkYXk6IDc6MDAgQU0g4oCTIDE6MDAgUE0iLCJUaHVyc2RheTogNzowMCBBTSDigJMgMTowMCBQTSIsIkZyaWRheTogNzowMCBBTSDigJMgMTowMCBQTSIsIlNhdHVyZGF5OiA4OjAwIEFNIOKAkyAzOjAwIFBNIiwiU3VuZGF5OiA4OjAwIEFNIOKAkyAzOjAwIFBNIl19fX0=
+  recorded_at: Thu, 04 Mar 2021 21:51:51 GMT
+recorded_with: VCR 6.0.0
