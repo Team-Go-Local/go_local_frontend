@@ -118,11 +118,16 @@ RSpec.describe ExcursionsService do
 
         expect(json_data).to have_key(:data)
         expect(json_data[:data]).to be_an(Array)
-        expect(json_data[:data].first[:id]).to be_an(Numeric)
+        expect(json_data[:data].first[:id]).to be_an(String)
         expect(json_data[:data].first[:type]).to be_a(String)
         expect(json_data[:data].first[:attributes]).to be_a(Hash)
         expect(json_data[:data].first[:attributes][:title]).to be_a(String)
         expect(json_data[:data].first[:attributes][:description]).to be_a(String)
+        
+        expect(json_data[:meta]).to be_a(Hash)
+        expect(json_data[:meta]).to have_key(:cities)
+        expect(json_data[:meta][:cities]).to be_an(Array)
+        expect(json_data[:meta][:cities][0]).to be_a(String)
       end
     end
   end

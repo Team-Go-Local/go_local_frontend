@@ -73,5 +73,17 @@ RSpec.describe ExcursionsFacade do
         expect(json_data.count).to eq(3)
       end
     end
+
+    describe 'city list' do
+      it 'can return an array of all associated cities in BE DB' do
+        json_response = File.read('spec/fixtures/all_excursions.json')
+        stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
+
+        ExcursionsFacade.list_all_excursions
+        cities = ExcursionsFacade.city_list
+
+        expect(cities).to match_array(['Denver, CO', 'New Orleans, LA'])
+      end
+    end
   end
 end

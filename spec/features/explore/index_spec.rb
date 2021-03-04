@@ -8,6 +8,7 @@ describe 'Explore Landing Page' do
 
     stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
+    allow(ExcursionsFacade).to receive(:city_list).and_return(['Denver, CO'])
 
     visit root_path
     within('.login') { click_link }
@@ -20,14 +21,30 @@ describe 'Explore Landing Page' do
     end
 
     expect(current_path).to eq('/explore')
-    expect(page).to have_button("Search by City")
+    expect(page).to have_content("Select by City")
 
     json_data = JSON.parse(json_response, symbolize_names: true)
 
     expect(page).to have_content(json_data[:data].first[:attributes][:title])
     expect(page).to have_link(json_data[:data].first[:attributes][:title])
     expect(page).to have_content(json_data[:data].first[:attributes][:description])
-    expect(page).to have_button("Save")
+    expect(page).to have_link("Save")
+  end
+
+  it 'can select a city from the drop down to search by' do
+    stub_omniauth
+    user = create(:omniauth_mock_user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    excursions = build_list(:excursion, 2)
+
+    allow(ExcursionsFacade).to receive(:list_all_excursions).and_return(excursions)
+    allow(ExcursionsFacade).to receive(:city_list).and_return(['Denver, CO'])
+
+    visit explore_path
+
+    select 'Denver, CO'
+
+    expect(current_path).to eq(explore_path)
   end
 
   describe 'sad path' do
