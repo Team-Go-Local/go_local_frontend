@@ -3,6 +3,10 @@ class ExcursionsController < ApplicationController
     @excursion = Excursion.new({ attributes: {} })
   end
 
+  def show 
+   @excursion = ExcursionsFacade.get_excursion(params[:id])
+  end
+
   def create
     if missing_params.present?
       @excursion = Excursion.new({ attributes: excursion_params })
