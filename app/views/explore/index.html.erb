@@ -1,13 +1,18 @@
 <div class="greet">
   <h1>Explore Page </h1>
+
+  <form method="get">
     <div class="form-group">
-      <select class="custom-select">
-        <%= form_with method: 'get', local: true do |f| %>
-          <%= f.select (:city, options_for_select(:nearest_city), {class: "select-field"}) %> 
-          <%= f.submit 'Search by City', style: 'pull-right' %>
-        <% end%>
-      </ul>
+      <select class="custom-select" onchange="this.form.submit()">
+        <option selected="">Select by City</option>
+        <% @excursions.each do |excursion| %>
+          <option value="excursion.location"><%= excursion.location %></option>
+        <% end %>
+      </select>
+      <noscript><input type="submit" value="Submit"></noscript>
     </div>
+  </form>
+
 </div>
 
 <section id="populated-excursions">
