@@ -1,42 +1,16 @@
-<br>
-<br>
-<br>
-<div class="excursion-title" >
-  <h1> <%= @excursion.title %> Details </h1>
+<div class="greet">
+    <h1> <%= @excursion.title %> Details </h1>
 </div>
 
-<div class="excursion-description" >
-  <h1> Description: <%= @excursion.description %></h1>
-</div>
 
-<div class="excursion-updated_at">
-  <h1> Date Last Updated: <%= @excursion.updated_at %></h1>
-</div>
-
-<div class="excursion-address">
-  <h1> Address: <%= @excursion.address %></h1>
-</div>
-
-<div class="excursion-name">
-  <h1> Name: <%= @excursion.name %></h1>
-</div>
-
-<div class="excursion-types">
-  <h1> Type: <%= @excursion.types %></h1>
-</div>
-
-<div class="excursion-phone_number">
-  <h1> Phone Number: <%= @excursion.phone_number %></h1>
-</div>
-
-<div class="excursion-website">
-<h1> Website: <%= link_to @excursion.website, @excursion.website %></h1>
-</div>
-
-<div class="excursion-business_status">
-  <h1> Status: <%= @excursion.business_status %></h1>
-</div>
-
-<div class="excursion-opening_hours">
-  <h1> Hours: <%= @excursion.opening_hours %></h1>
+<div class="excursion-group">
+  <div class="excursion-details" >
+    <p><b>Name: </b><%= @excursion.name %></p>
+    <p><small>Status: <%= @excursion.business_status.capitalize %></small></p>
+    <p><b>Local's Description: </b><%= @excursion.description %></p>
+    <p><b>Address: </b><%= @excursion.address %></p>
+    <p><b>Hours: </b><%= @excursion.opening_hours %></p>
+    <p><b>Website: </b><%= link_to @excursion.website, @excursion.website, style: "color: #CFFEBA" %></p>
+    <p><b>Date Last Updated: </b><%= @excursion.updated_at.to_date.strftime('%^B %-d %Y') %></p>
+  </div>
 </div>
