@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/explore', to: 'explore#index'
   get '/explore/search', to: 'explore#search'
   post '/excursion/:id/save', to: 'excursions#favorite', as: :favorite
+  delete '/excursion/:id/save', to: 'excursions#unfavorite', as: :unfavorite
 end
