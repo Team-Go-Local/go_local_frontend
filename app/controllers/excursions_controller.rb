@@ -13,28 +13,28 @@ class ExcursionsController < ApplicationController
       flash.now[:notice] = missing_params * "\n"
       render :new, obj: @excursion
     else
-      flash.now[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({ user_id: current_user.id }))
+      flash[:notice] = ExcursionsFacade.create_excursion(excursion_params.merge({ user_id: current_user.id }))
       redirect_to dashboard_path
     end
   end
 
   def edit
-    @excursion = ExcursionsFacade.get_excursion(params[:id])
+    @excursion = ExcursionsFacade.edit_excursion(params[:id])
   end
 
   def update
     if missing_params.present?
-      @excursion = Excursion.new({ attributes: excursion_params })
+      @excursion = Excursion.new({ id: params[:id], attributes: excursion_params })
       flash.now[:notice] = missing_params * "\n"
-      render :new, obj: @excursion
+      render :edit, obj: @excursion
     else
-      flash.now[:notice] = ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
+      flash[:notice] = ExcursionsFacade.update_excursion(excursion_params, current_user.id, params[:id])
       redirect_to dashboard_path
     end
   end
 
   def destroy
-    flash.now[:notice] = ExcursionsFacade.destroy_excursion(current_user.id, params[:id])
+    flash[:notice] = ExcursionsFacade.destroy_excursion(current_user.id, params[:id])
     redirect_to dashboard_path
   end
 
