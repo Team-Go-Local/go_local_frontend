@@ -1,12 +1,12 @@
 <div class="greet">
   <h1>Explore Page </h1>
 
-  <form method="get">
+  <form method="get" action="/explore/search">
     <div class="form-group">
-      <select class="custom-select" onchange="this.form.submit()">
+      <select class="custom-select" name="city" onchange="this.form.submit()">
         <option selected="">Select by City</option>
         <% @cities.each do |city| %>
-          <option value=""><%= city %></option>
+          <option value="<%= city %>"><%= city %></option>
         <% end %>
       </select>
       <noscript><input type="submit" value="Submit"></noscript>
