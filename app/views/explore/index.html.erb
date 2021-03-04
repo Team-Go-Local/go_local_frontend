@@ -5,15 +5,15 @@
     <div class="form-group">
       <select class="custom-select" onchange="this.form.submit()">
         <option selected="">Select by City</option>
-        <% @excursions.each do |excursion| %>
-          <option value="excursion.location"><%= excursion.location %></option>
+        <% @cities.each do |city| %>
+          <option value=""><%= city %></option>
         <% end %>
       </select>
       <noscript><input type="submit" value="Submit"></noscript>
     </div>
   </form>
 
-</div>
+</div> 
 
 <section id="populated-excursions">
   <h2>Search Results </h2>
