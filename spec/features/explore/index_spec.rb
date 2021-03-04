@@ -5,9 +5,9 @@ describe 'Explore Landing Page' do
     stub_omniauth
     user = create(:omniauth_mock_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/#{user.id}").to_return(status: 204)
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
     allow(ExcursionsFacade).to receive(:city_list).and_return(['Denver, CO'])
 
     visit root_path
@@ -53,7 +53,7 @@ describe 'Explore Landing Page' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 500)
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
       visit explore_path
 
       expect(page).to have_content("We're sorry, we were unable to locate the content you requested. Please try again later.")

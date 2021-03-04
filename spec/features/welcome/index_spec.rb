@@ -5,7 +5,7 @@ describe 'welcome page' do
     it 'has a welcome message and login link' do
       stub_omniauth
       allow(DashboardFacade).to receive(:user_excursions).and_return([])
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
       visit root_path
       stub_omniauth
 

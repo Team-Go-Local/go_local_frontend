@@ -6,7 +6,7 @@ RSpec.describe 'Show' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       allow(DashboardFacade).to receive(:user_excursions).and_return([])
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
       visit dashboard_path
 
       within '#traveller' do
@@ -24,6 +24,7 @@ RSpec.describe 'Show' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       excursions = build_list(:excursion, 3)
       allow(DashboardFacade).to receive(:user_excursions).and_return(excursions)
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
 
       visit dashboard_path
 
@@ -42,6 +43,7 @@ RSpec.describe 'Show' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       allow(DashboardFacade).to receive(:user_excursions).and_return([])
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
     end
 
     it 'links to the new excursion page' do
@@ -69,6 +71,7 @@ RSpec.describe 'Show' do
     it 'displays a message if the call to BE to find user\'s excursions fails' do
       user = create(:omniauth_mock_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
 
       stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
 
