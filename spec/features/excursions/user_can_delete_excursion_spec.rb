@@ -14,6 +14,7 @@ describe 'Excursion Delete' do
 
     allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
     allow(ExcursionsService).to receive(:destroy_excursion).and_return(200)
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
 
     visit dashboard_path
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
@@ -38,6 +39,7 @@ describe 'Excursion Delete' do
 
     allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
     stub_request(:delete, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions/#{excursion.id}").to_return(status: 500)
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
 
     visit dashboard_path
     within('#my_excursions') do
