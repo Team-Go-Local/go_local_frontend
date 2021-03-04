@@ -13,6 +13,7 @@ describe 'Excursion Create' do
       allow(excursion).to receive(:location).and_return("Harding Drive, New Orleans, LA, USA")
       allow(excursion).to receive(:id).and_return(1)
       allow(DashboardFacade).to receive(:user_excursions).and_return([excursion])
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
 
       visit excursions_new_path
       fill_in :title, with: excursion.title
@@ -32,7 +33,8 @@ describe 'Excursion Create' do
     it 'starts with no map and fields are not pre-filled' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
+      
       visit excursions_new_path
 
       expect(page).to have_field(:place, placeholder: 'Search...')
@@ -47,7 +49,7 @@ describe 'Excursion Create' do
     it 'validates that all fields have been filled out' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
       visit excursions_new_path
 
       fill_in :title, with: "Cake Cafe"
@@ -63,7 +65,8 @@ describe 'Excursion Create' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       stub_request(:post, "https://go-local-be.herokuapp.com/api/v1/users/1/excursions").to_return(status: 500)
       allow(DashboardFacade).to receive(:user_excursions).and_return([])
-
+      allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
+      
       visit excursions_new_path
       fill_in :title, with: "Green Apple Books"
       fill_in :description, with: "Thousands of books"

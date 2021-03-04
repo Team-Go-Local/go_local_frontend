@@ -33,6 +33,11 @@ class ExcursionsService
       conn.delete("/api/v1/users/#{user_id}/excursions/#{excursion_id}").status
     end
 
+    def favorited_excursions(user_id)
+      response = conn.get("/api/v1/users/#{user_id}/favorites")
+      parse_data(response)
+    end
+
     private
 
     def conn
