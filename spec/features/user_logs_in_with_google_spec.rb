@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "user logs in", type: :feature do
   it 'can log in using omniauth' do
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
     user_count = User.count
 
     expect(user_count).to eq(0)
@@ -22,6 +23,7 @@ RSpec.describe "user logs in", type: :feature do
   end
   it 'logs a returning user in via google mock' do
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
     stub_omniauth
 
     user = create(:omniauth_mock_user)
@@ -40,6 +42,7 @@ RSpec.describe "user logs in", type: :feature do
   end
   it 'logs a returning user out' do
     allow(DashboardFacade).to receive(:user_excursions).and_return([])
+    allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
     stub_omniauth
     user = create(:omniauth_mock_user)
 

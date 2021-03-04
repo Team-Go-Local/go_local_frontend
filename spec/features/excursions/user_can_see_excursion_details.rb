@@ -9,7 +9,7 @@ describe 'Excursion Show' do
         stub_omniauth
         user = create(:omniauth_mock_user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+        allow(DashboardFacade).to receive(:favorited_excursions).and_return([])
         visit root_path
         within('.login') { click_link }
 
