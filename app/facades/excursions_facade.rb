@@ -48,5 +48,9 @@ class ExcursionsFacade
     def favorite_excursion(user_id, excursion_id)
       ExcursionsService.favorite_excursion(user_id, excursion_id)
     end
+
+    def unfavorite_excursion(user_id, excursion_id)
+      ExcursionsService.unfavorite_excursion(user_id, excursion_id)
+    end
   end
 end
