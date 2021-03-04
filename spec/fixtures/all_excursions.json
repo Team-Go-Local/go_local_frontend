@@ -1,28 +1,46 @@
 {
   "data": [
-    {
-      "id": 1,
-      "type": "excursion",
-      "attributes": {
-        "title": "Wizards Chest",
-        "description": "Isabelle picked this place"
+      {
+          "id": "1",
+          "type": "excursion",
+          "attributes": {
+              "title": "Cabrini Bridge",
+              "description": "Historic pedestrian bridge spanning Bayou St. John in Mid City; great spot to enjoy a picnic",
+              "location": "Harding Dr, New Orleans, LA 70119",
+              "user_id": 1,
+              "place_id": null,
+              "nearest_city": "New Orleans, LA"
+          }
+      },
+      {
+          "id": "2",
+          "type": "excursion",
+          "attributes": {
+              "title": "Torchy's Tacos",
+              "description": "Get the breakfast tacos",
+              "location": "1085 N Broadway, Denver, CO 80203",
+              "user_id": 3,
+              "place_id": null,
+              "nearest_city": "Denver, CO"
+          }
+      },
+      {
+          "id": "3",
+          "type": "excursion",
+          "attributes": {
+              "title": "Buffalo Bill Museum",
+              "description": "Haunted museum",
+              "location": "987 1/2 Lookout Mountain Rd, Golden, CO 80401",
+              "user_id": 3,
+              "place_id": null,
+              "nearest_city": "Denver, CO"
+          }
       }
-    },
-    {
-      "id": 2,
-      "type": "excursion",
-      "attributes": {
-        "title": "La Fillette",
-        "description": "Saundra picked this place!"
-      }
-    },
-    {
-      "id": 3,
-      "type": "excursion",
-      "attributes": {
-        "title": "Fontainbleau State Park",
-        "description": "Gus hiked in this place!"
-      }
-    }
-  ]
+  ],
+  "meta": {
+      "cities": [
+          "Denver, CO",
+          "New Orleans, LA"
+      ]
+  }
 }
