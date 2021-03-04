@@ -3,7 +3,8 @@ class Excursion
               :location,
               :place_id,
               :description,
-              :id
+              :id,
+              :nearest_city
 
   def initialize(data)
     @title = data[:attributes][:title]
@@ -11,5 +12,6 @@ class Excursion
     @place_id = data[:attributes][:place_id]
     @description = data[:attributes][:description]
     @id = data[:id]
+    @nearest_city = data[:attributes][:nearest_city]
   end
 end

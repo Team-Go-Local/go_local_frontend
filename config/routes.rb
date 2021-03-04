@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   delete '/excursions/:id', to: 'excursions#destroy', as: :excursions_destroy
   get '/dashboard', to: 'dashboard#show'
   get '/explore', to: 'explore#index'
+  get '/explore/search', to: 'explore#search'
 end

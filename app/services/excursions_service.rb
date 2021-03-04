@@ -12,8 +12,10 @@ class ExcursionsService
       parse_data(response)
     end
 
-    def list_all_excursions
-      response = conn.get('/api/v1/excursions')
+    def list_all_excursions(city=nil)
+      response = conn.get('/api/v1/excursions') do |req|
+        req.params['city'] = city if city
+      end
       parse_data(response)
     end
 

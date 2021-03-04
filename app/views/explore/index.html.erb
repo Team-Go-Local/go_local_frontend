@@ -1,14 +1,30 @@
 <div class="greet">
   <h1>Explore Page </h1>
-</div>
 
-<h1><%= text_field_tag :city %></h1>
-<h1><%= button_to 'Search by City' %></h1>
+  <form method="get" action="/explore/search">
+    <div class="form-group">
+      <select class="custom-select" name="city" onchange="this.form.submit()">
+        <option selected="">Select by City</option>
+        <% @cities.each do |city| %>
+          <option value="<%= city %>"><%= city %></option>
+        <% end %>
+      </select>
+      <noscript><input type="submit" value="Submit"></noscript>
+    </div>
+  </form>
 
-<h2>Search Results </h2>
-<% @excursions.each do |excursion| %>
-  <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
-  <p><%= excursion.description %></p>
-  <h2><%=button_to "Save" %></h2>
-<% end %>
+</div> 
 
+<section id="populated-excursions">
+  <h2>Search Results </h2>
+  <% @excursions.each do |excursion| %>
+    <div class="card border-secondary mb-3" style="max-width: 15rem;">
+      <div class="card-header">Excursion</div>
+        <div class="card-body">
+        <p><%= link_to excursion.title, "/excursions/#{excursion.id}" %></p>
+        <p><%= excursion.description %></p>
+        <%=link_to "Save" %>
+      </div>
+    </div>
+  <% end %>
+</section>

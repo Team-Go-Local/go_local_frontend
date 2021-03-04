@@ -18,25 +18,18 @@ RSpec.describe ExcursionsFacade do
       expect(response).to eq("You have successfully created an Excursion!")
     end
   end
+  
   describe '.get_excursion' do
     it 'gets excursion info from BE through service' do
-      excursion_params = {
-        data: {
-          id: 7,
-          type: "excursion",
-          attributes: {
-            place_id: "ChIJE8tYRySHa4cRSaud_fDROfk",
-            location: "2440 18th St NW, Washington, DC, 20009, United States",
-            title: "Millie & Al's",
-            description: "Great atmosphere with skeleton siren to announce specials.",
-            user_id: 3
-        } } }
-      allow(ExcursionsService).to receive(:get_excursion).and_return(excursion_params)
+      VCR.use_cassette("excursion_details") do 
 
-      excursion = ExcursionsFacade.get_excursion(7)
-      expect(excursion).to be_an(Excursion)
+        data = ExcursionsFacade.get_excursion("1")
+
+        expect(data).to be_a(ExcursionDetails)
+      end 
     end
   end
+
   describe '.update_excursion' do
     it 'sends a patch request to the excursion service' do
       allow(ExcursionsService).to receive(:update_excursion).and_return(200)
@@ -71,6 +64,18 @@ RSpec.describe ExcursionsFacade do
         expect(json_data).to be_an(Array)
         expect(json_data.first).to be_an(Excursion)
         expect(json_data.count).to eq(3)
+      end
+    end
+
+    describe 'city list' do
+      it 'can return an array of all associated cities in BE DB' do
+        json_response = File.read('spec/fixtures/all_excursions.json')
+        stub_request(:get, "https://go-local-be.herokuapp.com/api/v1/excursions").to_return(status: 200, body: json_response)
+
+        ExcursionsFacade.list_all_excursions
+        cities = ExcursionsFacade.city_list
+
+        expect(cities).to match_array(['Denver, CO', 'New Orleans, LA'])
       end
     end
   end
