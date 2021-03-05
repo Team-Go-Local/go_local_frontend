@@ -33,19 +33,20 @@ describe 'Explore Landing Page' do
 
   it 'can select a city from the drop down to search by' do
     VCR.use_cassette('user-favorites') do
-      stub_omniauth
-      user = create(:omniauth_mock_user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      excursions = build_list(:excursion, 2)
+      VCR.use_cassette('all_excursions_list') do
+        stub_omniauth
+        user = create(:omniauth_mock_user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        excursions = build_list(:excursion, 2)
 
-      allow(ExcursionsFacade).to receive(:list_all_excursions).and_return(excursions)
-      allow(ExcursionsFacade).to receive(:city_list).and_return(['Denver, CO'])
+        allow(ExcursionsFacade).to receive(:city_list).and_return(['Denver, CO'])
 
-      visit explore_path
+        visit explore_path
 
-      select 'Denver, CO'
-
-      expect(current_path).to eq(explore_path)
+        select 'Denver, CO'
+        
+        expect(current_path).to eq(explore_path)
+      end
     end
   end
 
