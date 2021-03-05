@@ -6,7 +6,8 @@
 ## Table of Contents
 
 -   [Description](#description)
--   [Database Schema](#database_schema)
+-   [System Design](#system-design)
+-   [Database Schema](#database-schema)
 -   [Technologies Used](#technologies-used)
 -   [Local Setup](#local-setup)
 -   [Learning Goals](#learning-goals)
@@ -25,11 +26,11 @@ This repository houses the front-end Rails application.
 ### To view the deployed application, please visit [Go Local](https://go-local-fe.herokuapp.com) on Heroku
 
 ## System Design
-<img src="app/assets/images/system.png">
+<img src="app/assets/images/system.png" width="700">
 
 ## Database Schema
 
-<img width="700" alt="Screen Shot 2021-02-28 at 08 08 59" src="app/assets/images/schema.png">
+<img width="500" alt="Screen Shot 2021-02-28 at 08 08 59" src="app/assets/images/schema.png">
 
 ## Technologies Used
 - Rails v. 5.2.4
