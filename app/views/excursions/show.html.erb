@@ -17,7 +17,7 @@
     <% if @excursion.website %>
     <p><b>Website: </b><%= link_to @excursion.website, @excursion.website, style: "color: #CFFEBA" %></p>
     <% else %>
-    <p><b>Website Does Not Exist</p></b>
+    <p><b>Website Does Not Exist</b></p>
     <% end %>
     <p><b>Date Last Updated: </b><%= @excursion.updated_at.to_date.strftime('%^B %-d %Y') %></p>
   </div>
