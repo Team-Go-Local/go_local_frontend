@@ -18,4 +18,4 @@ class ExploreController < ApplicationController
   ensure
     render :index
   end
-end 
+end

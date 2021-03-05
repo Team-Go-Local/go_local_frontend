@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://go-local-be.herokuapp.com/api/v1/excursions/8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 04 Mar 2021 23:10:28 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"234e6834eaa9da3dd9dae03556473ee7"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c96e8563-bee9-497b-b500-d8a47e76a19d
+      X-Runtime:
+      - '0.296049'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiOCIsInR5cGUiOiJleGN1cnNpb25fZGV0YWlscyIsImF0dHJpYnV0ZXMiOnsiaWQiOjgsInRpdGxlIjoiTXVzZXVtIG9mIENvbnRlbXBvcmFyeSBBcnQgRGVudmVyIiwiZGVzY3JpcHRpb24iOiJmYW5jeSBtdXNldW0iLCJ1cGRhdGVkX2F0IjoiMjAyMS0wMy0wNFQyMToxNjozMy4xMDBaIiwicGxhY2VfaWQiOiJDaElKdmNIUVFjRjRiSWNSbUR0dEpSZDBGTjQiLCJuZWFyZXN0X2NpdHkiOm51bGwsImZvcm1hdHRlZF9hZGRyZXNzIjoiMTQ4NSBEZWxnYW55IFN0LCBEZW52ZXIsIENPIDgwMjAyLCBVU0EiLCJuYW1lIjoiTXVzZXVtIG9mIENvbnRlbXBvcmFyeSBBcnQgRGVudmVyIiwidHlwZXMiOlsidG91cmlzdF9hdHRyYWN0aW9uIiwibXVzZXVtIiwicG9pbnRfb2ZfaW50ZXJlc3QiLCJlc3RhYmxpc2htZW50Il0sInBob25lX251bWJlciI6IigzMDMpIDI5OC03NTU0Iiwid2Vic2l0ZSI6Imh0dHA6Ly93d3cubWNhZGVudmVyLm9yZy8iLCJidXNpbmVzc19zdGF0dXMiOiJPUEVSQVRJT05BTCIsIm9wZW5pbmdfaG91cnMiOlsiTW9uZGF5OiBDbG9zZWQiLCJUdWVzZGF5OiAxMjowMCDigJMgNzowMCBQTSIsIldlZG5lc2RheTogMTI6MDAg4oCTIDc6MDAgUE0iLCJUaHVyc2RheTogMTI6MDAg4oCTIDc6MDAgUE0iLCJGcmlkYXk6IDEyOjAwIOKAkyA3OjAwIFBNIiwiU2F0dXJkYXk6IDEwOjAwIEFNIOKAkyA1OjAwIFBNIiwiU3VuZGF5OiAxMDowMCBBTSDigJMgNTowMCBQTSJdfX19
+  recorded_at: Thu, 04 Mar 2021 23:10:29 GMT
+recorded_with: VCR 6.0.0
