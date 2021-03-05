@@ -15,6 +15,9 @@ class ExploreController < ApplicationController
   def search
     @excursions = ExcursionsFacade.list_all_excursions(params[:city])
     @cities = ExcursionsFacade.city_list
+    @favorited_excursions = DashboardFacade.favorited_excursions(current_user.id).map do |excursion|
+      excursion.id
+    end
   rescue JSON::ParserError
     @excursions = []
     @cities = []
