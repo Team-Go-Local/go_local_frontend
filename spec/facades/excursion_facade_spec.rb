@@ -26,6 +26,10 @@ RSpec.describe ExcursionsFacade do
         data = ExcursionsFacade.get_excursion("1")
 
         expect(data).to be_a(ExcursionDetails)
+        expect(data.title).to be_a(String)
+        expect(data.opening_hours).to be_an(Array)
+        expect(data.types).to be_an(Array)
+        expect(data.name).to be_a(String)
       end 
     end
   end

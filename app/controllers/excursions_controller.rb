@@ -4,7 +4,7 @@ class ExcursionsController < ApplicationController
   end
 
   def show
-   @excursion = ExcursionsFacade.get_excursion(params[:id])
+    @excursion = ExcursionsFacade.get_excursion(params[:id])
   end
 
   def create

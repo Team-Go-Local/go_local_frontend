@@ -33,7 +33,7 @@ class ExcursionsFacade
       Excursion.new(data[:data])
     end
 
-    def list_all_excursions(city=nil)
+    def list_all_excursions(city = nil)
       data = ExcursionsService.list_all_excursions(city)
       data[:data].map do |excursion|
         Excursion.new(excursion)

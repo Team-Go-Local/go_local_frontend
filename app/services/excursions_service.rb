@@ -3,7 +3,7 @@ class ExcursionsService
     def create_excursion(params)
       conn.post("/api/v1/users/#{params[:user_id]}/excursions") do |request|
         request.headers['Content-Type'] = 'application/json'
-        request.body = {excursion: params}.to_json
+        request.body = { excursion: params }.to_json
       end.status
     end
 
@@ -12,7 +12,7 @@ class ExcursionsService
       parse_data(response)
     end
 
-    def list_all_excursions(city=nil)
+    def list_all_excursions(city = nil)
       response = conn.get('/api/v1/excursions') do |req|
         req.params['city'] = city if city
       end
@@ -22,7 +22,7 @@ class ExcursionsService
     def update_excursion(excursion_params, user_id, excursion_id)
       conn.patch("/api/v1/users/#{user_id}/excursions/#{excursion_id}") do |request|
         request.headers['Content-Type'] = 'application/json'
-        request.body = {excursion: excursion_params}.to_json
+        request.body = { excursion: excursion_params }.to_json
       end.status
     end
 
@@ -51,7 +51,7 @@ class ExcursionsService
     private
 
     def conn
-     @conn ||= Faraday.new(url: "https://go-local-be.herokuapp.com")
+      @conn ||= Faraday.new(url: 'https://go-local-be.herokuapp.com')
     end
 
     def parse_data(response)
