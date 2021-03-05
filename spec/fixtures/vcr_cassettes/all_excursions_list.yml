@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://go-local-be.herokuapp.com/api/v1/excursions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Fri, 05 Mar 2021 00:47:05 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"617712cbf696aa6e06f27d82d77a73cf"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 258da40d-746c-4ae2-8f8b-a93ff0d4c842
+      X-Runtime:
+      - '1.421322'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"id":"1","type":"excursion","attributes":{"title":"Amethyst
+        Coffee- Broadway","description":"Local neighborhood shop for great drinks,
+        local pastries from Rebel Bread and atmosphere. Outside seating available
+        with fireplace. Suggest a cappuccino or Oat Milk Matcha!","location":"1111
+        Broadway #101, Denver, CO 80203, USA","user_id":3,"place_id":"ChIJSbrgrrEWcEAR3lFElZXIvO0","nearest_city":"Denver,
+        CO"}},{"id":"4","type":"excursion","attributes":{"title":"French Quarter","description":"I
+        had a LOT of shrimp and crawfish here :D","location":"French Quarter, New
+        Orleans, LA, USA","user_id":2,"place_id":"ChIJf5407BGmIIYROiKyvb07vZg","nearest_city":"New
+        Orleans, LA"}},{"id":"2","type":"excursion","attributes":{"title":"Good Bread
+        Denver","description":"New local bread shop that specializes in sourdough,
+        french pastries and donuts. I highly suggest any savory danish or croissant!
+        Conveniently located by a great coffee shop across the street. Tell the baker,
+        Gabby, Iz sent you","location":"1515 Madison St, Denver, CO 80206, USA","user_id":3,"place_id":"ChIJLU2eJs5_bIcR7kMjowHh1yE","nearest_city":"Denver,
+        CO"}},{"id":"6","type":"excursion","attributes":{"title":"Casa Bonita","description":"Go
+        for the experience, not the food.","location":"6715 W Colfax Ave, Lakewood,
+        CO 80214, USA","user_id":247,"place_id":"ChIJE7tYRySHa4cRSauU_fDROfk","nearest_city":"Denver,
+        CO"}},{"id":"8","type":"excursion","attributes":{"title":"Museum of Contemporary
+        Art Denver","description":"fancy museum","location":"1485 Delgany St, Denver,
+        CO 80202, USA","user_id":1,"place_id":"ChIJvcHQQcF4bIcRmDttJRd0FN4","nearest_city":"Denver,
+        CO"}}],"meta":{"cities":["Denver, CO","New Orleans, LA"]}}'
+  recorded_at: Fri, 05 Mar 2021 00:47:06 GMT
+recorded_with: VCR 6.0.0

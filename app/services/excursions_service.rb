@@ -44,6 +44,10 @@ class ExcursionsService
       conn.post("api/v1/users/#{user_id}/favorites/#{excursion_id}")
     end
 
+    def unfavorite_excursion(user_id, excursion_id)
+      conn.delete("api/v1/users/#{user_id}/favorites/#{excursion_id}")
+    end
+
     private
 
     def conn

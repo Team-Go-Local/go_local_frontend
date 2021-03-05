@@ -40,6 +40,16 @@ class ExcursionsController < ApplicationController
 
   def favorite
     ExcursionsFacade.favorite_excursion(current_user.id, params[:id])
+    redirect_to explore_path
+  end
+
+  def unfavorite
+    ExcursionsFacade.unfavorite_excursion(current_user.id, params[:id])
+    if params[:format] == "dashboard"
+      redirect_to dashboard_path
+    else
+      redirect_to explore_path
+    end
   end
 
   private
