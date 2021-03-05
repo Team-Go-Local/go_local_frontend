@@ -78,12 +78,12 @@ This repository houses the front-end Rails application.
 
 ## Learning Goals
 
-    - Utilize a Service-Oriented Architecture with a front-end, a back-end, and a micro-service
-    - Consume external APIs
-    - Build APIs that return JSON responses
-    - Use an external OAuth provider to authenticate users
-    - Deploy a production-quality user interface
-    - Implement an Agile workflow, including sprint planning & reviews and use of GitHub project management & code review tools
+- Utilize a Service-Oriented Architecture with a front-end, a back-end, and a micro-service
+- Consume external APIs
+- Build APIs that return JSON responses
+- Use an external OAuth provider to authenticate users
+- Deploy a production-quality user interface
+- Implement an Agile workflow, including sprint planning & reviews and use of GitHub project management & code review tools
 
 ## Authors
 -   Cydnee Owens | [github](https://github.com/cowens87) \| [linkedin](https://www.linkedin.com/in/cydnee-owens-5280/)
